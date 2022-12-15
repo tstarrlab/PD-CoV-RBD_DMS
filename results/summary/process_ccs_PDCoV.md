@@ -304,6 +304,12 @@ p = (
 _ = p.draw()
 ```
 
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_32_0.png)
+    
+
+
 And the read stats by library (combining all targets and runs within a library):
 
 
@@ -326,6 +332,12 @@ p = (
 _ = p.draw()
 ```
 
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_34_0.png)
+    
+
+
 And the number of reads by target (combining all libraries and runs for a target):
 
 
@@ -345,6 +357,12 @@ p = (
     )
 _ = p.draw()
 ```
+
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_36_0.png)
+    
+
 
 And read stats by target (combining all libraries and runs for a target):
 
@@ -368,6 +386,12 @@ p = (
     )
 _ = p.draw()
 ```
+
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_38_0.png)
+    
+
 
 Now let's see **why** we filtered the reads.
 First, we do some transformations on the `filtered` dict returned by `Targets.align_and_parse`.
@@ -412,6 +436,12 @@ p = (
     )
 _ = p.draw()
 ```
+
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_42_0.png)
+    
+
 
 Finally, we take the successfully parsed alignments and read them into a data frame, keeping track of the target that each CCS aligns to.
 We also drop the pieces of information we won't use going forward, and rename a few columns:
@@ -699,6 +729,12 @@ _ = (
  ).draw()
 ```
 
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_59_0.png)
+    
+
+
 Flag the CCSs to retain, and indicate how many we are retaining and purging due to the accuracy filter:
 
 
@@ -733,6 +769,12 @@ _ = (
  ).draw()
 ```
 
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_63_0.png)
+    
+
+
 ### Sequences per barcode
 How many times is each barcode sequenced?
 This is useful to know for thinking about building the barcode consensus.
@@ -764,6 +806,12 @@ p = (
 
 _ = p.draw()
 ```
+
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_65_0.png)
+    
+
 
 ### Empirical accuracy of CCSs
 We want to directly estimate the accuracy of the gene-barcode link rather than relying on the PacBio `ccs` accuracy, which doesn't include inaccuracies due to things like strand exchange or the same barcode on different sequences.
@@ -812,6 +860,12 @@ _ = (
  facet_wrap('~ library', nrow=1)
  ).draw()
 ```
+
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_69_0.png)
+    
+
 
 Now get the empirical accuracy for each of the CCS groups mentioned above:
 
@@ -962,6 +1016,12 @@ _ = p.draw()
 ```
 
     Saving plot to results/figures/empirical_CCS_accuracy.pdf
+
+
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_75_1.png)
+    
 
 
 The above analysis shows that if we exclude sequences with indels (which we plan to do among our consensus sequences), then the accuracy of each CCS is around 99%. 
@@ -1148,6 +1208,12 @@ _ = (
  ).draw()
 ```
 
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_84_0.png)
+    
+
+
 We see that most variant consensus sequences do **not** have indels, especially if we limit to the more "accurate" ones that have multiple CCSs supporting them.
 
 We will ignore all consensus sequences with indels in the variant-barcode lookup table. 
@@ -1205,6 +1271,12 @@ _ = p.draw()
     </tr>
   </tbody>
 </table>
+
+
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_86_1.png)
+    
 
 
 Below we write the retained consensus sequences to a CSV file that links the nucleotide mutations to the barcodes.
@@ -1366,6 +1438,12 @@ _ = (
  ).draw()
 ```
 
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_92_0.png)
+    
+
+
 ## Create barcode-variant table
 We now create a [CodonVariantTable](https://jbloomlab.github.io/dms_variants/dms_variants.codonvarianttable.html#dms_variants.codonvarianttable.CodonVariantTable) that stores and processes all the information about the variant consensus sequences.
 Below we initialize such a table, and then analyze information about its composition.
@@ -1458,6 +1536,12 @@ p = p + theme(panel_grid_major_x=element_blank())  # no vertical grid lines
 _ = p.draw()
 ```
 
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_100_0.png)
+    
+
+
 ### Mutations per variant
 Plot the number of barcoded variants with each number of amino-acid and codon mutations.
 This is for the primary target only, and doesn't include the spiked-in secondary targets:
@@ -1481,6 +1565,18 @@ for mut_type in ['aa', 'codon']:
     Saving plot to results/figures/n_codon_muts_per_variant_PDCoV.pdf
 
 
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_102_1.png)
+    
+
+
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_102_2.png)
+    
+
+
 Plot the frequencies of different codon mutation types among **all** variants (any number of mutations), again only for primary target:
 
 
@@ -1498,6 +1594,12 @@ p.save(plotfile)
     Saving plot to results/figures/avg_muts_per_variant_PDCoV.pdf
 
 
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_104_1.png)
+    
+
+
 Variants supported by multiple PacBio CCSs should have fewer spurious mutations since sequencing errors are very unlikely to occur on two CCSs.
 Below we plot the number of codon mutations per variant among variants with at least two CCSs supporting their call.
 The difference in mutation rates here and in the plot above (that does not apply the `min_support=2` filter) gives some estimate of the frequency of mutations in our variants our spurious.
@@ -1511,6 +1613,12 @@ p = variants.plotNumCodonMutsByType(variant_type='all', samples=None,
 p = p + theme(panel_grid_major_x=element_blank())  # no vertical grid lines
 _ = p.draw()
 ```
+
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_106_0.png)
+    
+
 
 ### Completeness of mutation sampling
 We examine how completely amino-acid mutations are sampled by the variants for the primary target, looking at single-mutant variants only and all variants.
@@ -1530,6 +1638,18 @@ for variant_type in ['all', 'single']:
 
     Saving plot to results/figures/variant_cumul_all_mut_coverage_PDCoV.pdf
     Saving plot to results/figures/variant_cumul_single_mut_coverage_PDCoV.pdf
+
+
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_108_1.png)
+    
+
+
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_108_2.png)
+    
 
 
 To get more quantitative information like that plotted above, we determine how many mutations are found 0, 1, or >1 times both among single and all mutants for the primary target:
@@ -1755,6 +1875,18 @@ for variant_type in ['all', 'single']:
     p.draw()
 ```
 
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_112_0.png)
+    
+
+
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_112_1.png)
+    
+
+
 We can also use heat maps to examine the extent to which specific amino-acid or codon mutations are over-represented.
 These heat maps are large, so we make them just for all variants and the merge of all libraries:
 
@@ -1765,6 +1897,18 @@ for mut_type in ['aa', 'codon']:
                                 widthscale=2)
     p.draw()
 ```
+
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_114_0.png)
+    
+
+
+
+    
+![png](process_ccs_PDCoV_files/process_ccs_PDCoV_114_1.png)
+    
+
 
 ### Write codon-variant table
 We write the codon variant table to a CSV file.
