@@ -191,8 +191,8 @@ print(targets.feature_parse_specs('yaml'))
 ```
 
     PDCoV:
-      query_clip5: 8
-      query_clip3: 8
+      query_clip5: 4
+      query_clip3: 4
       termini5:
         filter:
           clip5: 4
@@ -568,7 +568,7 @@ print(f"Read {len(processed_ccs)} CCSs from {nlibs} libraries and {ntargets} tar
 display(HTML(processed_ccs.head().to_html(index=False)))
 ```
 
-    Read 1993173 CCSs from 2 libraries and 1 targets.
+    Read 1993106 CCSs from 2 libraries and 1 targets.
 
 
 
@@ -671,14 +671,14 @@ display(HTML(
     <tr>
       <th rowspan="2" valign="top">PDCoV</th>
       <th>lib55</th>
-      <td>1100416</td>
-      <td>66460</td>
+      <td>1100381</td>
+      <td>66459</td>
       <td>16.56</td>
     </tr>
     <tr>
       <th>lib56</th>
-      <td>892757</td>
-      <td>68720</td>
+      <td>892725</td>
+      <td>68719</td>
       <td>12.99</td>
     </tr>
   </tbody>
@@ -934,56 +934,56 @@ display(HTML(empirical_acc.to_html(index=False)))
       <td>lib55</td>
       <td>0.960688</td>
       <td>retained</td>
-      <td>967166</td>
+      <td>967147</td>
       <td>False</td>
     </tr>
     <tr>
       <td>lib56</td>
-      <td>0.891192</td>
+      <td>0.891198</td>
       <td>retained</td>
-      <td>755493</td>
+      <td>755482</td>
       <td>False</td>
     </tr>
     <tr>
       <td>lib55</td>
       <td>0.975140</td>
       <td>retained, no indel</td>
-      <td>947878</td>
+      <td>947859</td>
       <td>True</td>
     </tr>
     <tr>
       <td>lib56</td>
-      <td>0.918858</td>
+      <td>0.918860</td>
       <td>retained, no indel</td>
-      <td>728579</td>
+      <td>728572</td>
       <td>True</td>
     </tr>
     <tr>
       <td>lib55</td>
-      <td>0.968141</td>
+      <td>0.968140</td>
       <td>10X accuracy</td>
-      <td>915113</td>
+      <td>915097</td>
       <td>False</td>
     </tr>
     <tr>
       <td>lib56</td>
       <td>0.907005</td>
       <td>10X accuracy</td>
-      <td>704165</td>
+      <td>704160</td>
       <td>False</td>
     </tr>
     <tr>
       <td>lib55</td>
       <td>0.977166</td>
       <td>10X accuracy, no indel</td>
-      <td>902114</td>
+      <td>902098</td>
       <td>False</td>
     </tr>
     <tr>
       <td>lib56</td>
-      <td>0.925996</td>
+      <td>0.925997</td>
       <td>10X accuracy, no indel</td>
-      <td>685997</td>
+      <td>685992</td>
       <td>False</td>
     </tr>
   </tbody>
@@ -1262,12 +1262,12 @@ _ = p.draw()
     <tr>
       <td>lib55</td>
       <td>PDCoV</td>
-      <td>44576</td>
+      <td>44575</td>
     </tr>
     <tr>
       <td>lib56</td>
       <td>PDCoV</td>
-      <td>30363</td>
+      <td>30364</td>
     </tr>
   </tbody>
 </table>
@@ -1515,8 +1515,8 @@ display(HTML(
   <tbody>
     <tr>
       <th>PDCoV</th>
-      <td>44576</td>
-      <td>30363</td>
+      <td>44575</td>
+      <td>30364</td>
       <td>74939</td>
     </tr>
   </tbody>

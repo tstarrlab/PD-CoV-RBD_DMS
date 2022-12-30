@@ -1,6 +1,6 @@
 PDCoV:
-  query_clip5: 8
-  query_clip3: 8
+  query_clip5: 4
+  query_clip3: 4
   termini5:
     filter:
       clip5: 4
