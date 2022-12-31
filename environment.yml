@@ -15,6 +15,7 @@ dependencies:
   - natsort
   - nodejs
   - notebook=6.4.6
+  - pandoc
   - pbccs=6.0.0
   - pip
   - python=3.8

@@ -30,8 +30,8 @@ invisible(lapply(packages, library, character.only=T))
 config <- read_yaml("config.yaml")
 
 #make output directory
-if(!file.exists(config$Titeseq_Kds_dir)){
-  dir.create(file.path(config$Titeseq_Kds_dir))
+if(!file.exists(config$binding_scores_dir)){
+  dir.create(file.path(config$binding_scores_dir))
 }
 ```
 Session info for reproducing environment:
@@ -114,12 +114,12 @@ Next, for each barcode at each of the APN concentrations, calculate the "mean bi
 We do not use the fluorescence boundaries of the FACS bins in our calculations here, but we provide them for posterity's sake below. For the library titration sorts, the fluorescence boundaries for bins 1-4 are as follows:
 
 ```
-(-288, 254), (255, 1633), (1634, 10348), (10349, 262143)
+(-288, 94), (94, 1087), (1087, 12349), (12350, 262143)
 ```
 
 ```{r calculate_mean_bin}
-#function that returns mean bin and sum of counts for four bins cell counts. Includes cutoffs for bimodal sample splits to filter out
-calc.meanbin <- function(vec, split13filter=0.4, split24filter=0.4, split14filter=0.4){
+#function that returns mean bin and sum of counts for four bins cell counts. Includes cutoffs for bimodal sample splits to filter out. Let's not filter bimodal at present  so we don't remove any sequences indicative of barcode collisions (making filter >0.5 makes it in essence off)
+calc.meanbin <- function(vec, split13filter=0.51, split24filter=0.51, split14filter=0.51){
   total <- sum(vec)
   if(is.na(total) | (vec[1] > split13filter*total & vec[3] > split13filter*total) | (vec[2] > split24filter*total & vec[4] > split24filter*total) | (vec[1] > split14filter*total & vec[4] > split14filter*total)){
     return(list(NA,NA))
@@ -187,7 +187,7 @@ fit.titration <- function(y.vals,x.vals,count.vals,min.cfu=cutoff,
 }
 
 #fit titration to gAPN Titeseq data for each barcode
-dt[,c("Kd_APN","Kd_SE_APN","response_APN","baseline_APN","nMSR_APN") :=
+dt[,c("Kd_gAPN","Kd_SE_gAPN","response_gAPN","baseline_gAPN","nMSR_gAPN") :=
      tryCatch(fit.titration(y.vals=c(TiteSeq_01_meanbin,TiteSeq_02_meanbin,TiteSeq_03_meanbin,TiteSeq_04_meanbin,
                                      TiteSeq_05_meanbin,TiteSeq_06_meanbin,TiteSeq_07_meanbin,TiteSeq_08_meanbin,
                                      TiteSeq_09_meanbin),
@@ -200,24 +200,24 @@ dt[,c("Kd_APN","Kd_SE_APN","response_APN","baseline_APN","nMSR_APN") :=
 ## QC and sanity checks
 We will do some QC to make sure we got good titration curves for most of our library barcodes. We will also spot check titration curves from across our measurement range, and spot check curves whose fit parameters hit the different boundary conditions of the fit variables.
 
-We successfully generated *K*<sub>D</sub> estimates for `r sum(!is.na(dt[library=="pool1A",Kd_APN]))` of our pool1A barcodes (`r round(sum(!is.na(dt[library=="pool1A",Kd_APN]))/nrow(dt[library=="pool1A",])*100,digits=2)`%), and `r sum(!is.na(dt[library=="pool2A",Kd_APN]))` of our pool2A barcodes (`r round(sum(!is.na(dt[library=="pool2A",Kd_APN]))/nrow(dt[library=="pool2A",])*100,digits=2)`%). 
+We successfully generated *K*<sub>D</sub> estimates for `r sum(!is.na(dt[library=="lib55A",Kd_gAPN]))` of our lib55A barcodes (`r round(sum(!is.na(dt[library=="lib55A",Kd_gAPN]))/nrow(dt[library=="lib55A",])*100,digits=2)`%), and `r sum(!is.na(dt[library=="lib56A",Kd_gAPN]))` of our lib56A barcodes (`r round(sum(!is.na(dt[library=="lib56A",Kd_gAPN]))/nrow(dt[library=="lib56A",])*100,digits=2)`%). 
 
 
 Why were estimates not returned for some barcodes? The histograms below show that many barcodes with unsuccessful titration fits have lower average cell counts and more concentrations with fewer than the minimum cutoff number of cells (cutoff=`r cutoff`) than those that were fit. Therefore, we can see the the majority of unfit barcodes come from our minimum read cutoffs, meaning there weren't too many curves that failed to be fit for issues such as nls convergence.
 
 ```{r avgcount, fig.width=8, fig.height=8, fig.align="center",dpi=300,dev="png"}
 par(mfrow=c(2,2))
-hist(log10(dt[library=="pool1A" & !is.na(Kd_APN),TiteSeq_avgcount]+0.5),breaks=20,xlim=c(0,5),main="pool1A",col="gray50",xlab="average cell count across concentration samples")
-hist(log10(dt[library=="pool1A" & is.na(Kd_APN),TiteSeq_avgcount]+0.5),breaks=20,add=T,col="red")
+hist(log10(dt[library=="lib55A" & !is.na(Kd_gAPN),TiteSeq_avgcount]+0.5),breaks=20,xlim=c(0,5),main="lib55A",col="gray50",xlab="average cell count across concentration samples")
+hist(log10(dt[library=="lib55A" & is.na(Kd_gAPN),TiteSeq_avgcount]+0.5),breaks=20,add=T,col="red")
 
-hist(log10(dt[library=="pool2A" & !is.na(Kd_APN),TiteSeq_avgcount]+0.5),breaks=20,xlim=c(0,5),main="pool2A",col="gray50",xlab="average cell count across concentration samples")
-hist(log10(dt[library=="pool2A" & is.na(Kd_APN),TiteSeq_avgcount]+0.5),breaks=20,add=T,col="red")
+hist(log10(dt[library=="lib56A" & !is.na(Kd_gAPN),TiteSeq_avgcount]+0.5),breaks=20,xlim=c(0,5),main="lib56A",col="gray50",xlab="average cell count across concentration samples")
+hist(log10(dt[library=="lib56A" & is.na(Kd_gAPN),TiteSeq_avgcount]+0.5),breaks=20,add=T,col="red")
 
-hist(dt[library=="pool1A" & !is.na(Kd_APN),TiteSeq_min_cell_filtered],breaks=5,main="pool1A",col="gray50",xlab="number of sample concentrations below cutoff cell number",xlim=c(0,10))
-hist(dt[library=="pool1A" & is.na(Kd_APN),TiteSeq_min_cell_filtered],breaks=16,add=T,col="red")
+hist(dt[library=="lib55A" & !is.na(Kd_gAPN),TiteSeq_min_cell_filtered],breaks=5,main="lib55A",col="gray50",xlab="number of sample concentrations below cutoff cell number",xlim=c(0,10))
+hist(dt[library=="lib55A" & is.na(Kd_gAPN),TiteSeq_min_cell_filtered],breaks=16,add=T,col="red")
 
-hist(dt[library=="pool2A" & !is.na(Kd_APN),TiteSeq_min_cell_filtered],breaks=5,main="pool2A",col="gray50",xlab="number of sample concentrations below cutoff cell number",xlim=c(0,10))
-hist(dt[library=="pool2A" & is.na(Kd_APN),TiteSeq_min_cell_filtered],breaks=16,add=T,col="red")
+hist(dt[library=="lib56A" & !is.na(Kd_gAPN),TiteSeq_min_cell_filtered],breaks=5,main="lib56A",col="gray50",xlab="number of sample concentrations below cutoff cell number",xlim=c(0,10))
+hist(dt[library=="lib56A" & is.na(Kd_gAPN),TiteSeq_min_cell_filtered],breaks=16,add=T,col="red")
 ```
 
 Let's checkout what the data looks like for some curves that didn't converge on a titration fit, different cutoffs, boudnary conditions, etc. I define a function that take a row from the data table and plots the meanbin estimates and the fit titration curve (if converged). This allows for quick and easy troubleshooting and spot-checking of curves.
@@ -242,7 +242,7 @@ plot.titration <- function(row,output.text=F){
   x.vals <- x.vals[indices]
   plot(x.vals,y.vals,xlab="[APN] (M)",
        ylab="mean bin",log="x",ylim=c(1,4),xlim=c(1e-13,1e-6),pch=19,main=title)
-  Kd_var <- "Kd_APN"
+  Kd_var <- "Kd_gAPN"
   fit <- nls(y.vals ~ a*(x.vals/(x.vals+Kd))+b,
              start=list(a=3,b=1,Kd=dt[row,get(Kd_var)]),
              lower=list(a=2,b=1,Kd=1e-15),
@@ -253,7 +253,7 @@ plot.titration <- function(row,output.text=F){
     legend("topleft",bty="n",cex=1,legend=paste("Kd",format(dt[row,get(Kd_var)],digits=3),"M"))
   }
   if(output.text==T){ #for troubleshooting and interactive work, output some info from the counts table for the given row
-    vars <- c("library","barcode","target","variant_class","aa_substitutions","TiteSeq_avgcount","TiteSeq_min_cell_filtered","Kd_APN","Kd_SE_APN","baseline_APN","response_APN","nMSR_APN")
+    vars <- c("library","barcode","target","variant_class","aa_substitutions","TiteSeq_avgcount","TiteSeq_min_cell_filtered","Kd_gAPN","Kd_SE_gAPN","baseline_gAPN","response_gAPN","nMSR_gAPN")
     return(dt[row,..vars])
   }
 }
@@ -261,22 +261,19 @@ plot.titration <- function(row,output.text=F){
 
 Distribution of Kd estimates, with wt/syn barcodes in purple:
 
-```{r Kd_distribution, fig.width=5, fig.height=9, fig.align="center",dpi=300,dev="png"}
-par(mfrow=c(3,1))
-hist(log10(dt[target=="Wuhan_Hu_1",Kd_APN]),col="gray40",breaks=60,xlab="log10(KD), APN (M)",main="Wuhan_Hu_1",xlim=c(-13,-5))
-hist(log10(dt[target=="Wuhan_Hu_1" & variant_class %in% (c("synonymous","wildtype")),Kd_APN]),col="#92278F",add=T,breaks=60)
-hist(log10(dt[target=="BA1",Kd_APN]),col="gray40",breaks=60,xlab="log10(KD), APN (M)",main="BA1",xlim=c(-13,-5))
-hist(log10(dt[target=="BA1" & variant_class %in% (c("synonymous","wildtype")),Kd_APN]),col="#92278F",add=T,breaks=60)
-hist(log10(dt[target=="BA2",Kd_APN]),col="gray40",breaks=60,xlab="log10(KD), APN (M)",main="BA2",xlim=c(-13,-5))
-hist(log10(dt[target=="BA2" & variant_class %in% (c("synonymous","wildtype")),Kd_APN]),col="#92278F",add=T,breaks=60)
+```{r Kd_distribution, fig.width=5, fig.height=4, fig.align="center",dpi=300,dev="png"}
+
+hist(log10(dt[,Kd_gAPN]),col="gray40",breaks=60,xlab="log10(KD), APN (M)",main="PD-CoV",xlim=c(-13,-5))
+hist(log10(dt[variant_class %in% (c("synonymous","wildtype")),Kd_gAPN]),col="#92278F",add=T,breaks=60)
+hist(log10(dt[variant_class %in% (c("stop")),Kd_gAPN]),col="red",add=T,breaks=60)
 #save pdf
-invisible(dev.print(pdf, paste(config$Titeseq_Kds_dir,"/hist_Kd-per-barcode.pdf",sep="")))
+invisible(dev.print(pdf, paste(config$binding_scores_dir,"/hist_Kd-per-barcode.pdf",sep="")))
 ```
 
 Some stop variants eked through our RBD+ selection, either perhaps because of stop codon readthrough, improper PacBio sequence annotation, or other weirdness. Either way, the vast majority of nonsense mutants were purged before this step, and the remaining ones are biased toward unreliable and so we remove them.
 ```{r remove_stops}
-#remove stop variants, which even if they eke through, either a) still have low counts and give poor fits as a result, or b) seem to be either dubious PacBio calls (lower variant_call_support) or have late stop codons which perhaps don't totally ablate funciton. Either way, the vast majority were purged before this step and we don't want to deal with the remaining ones!
-dt[variant_class == "stop",c("Kd_APN","Kd_SE_APN","response_APN","baseline_APN","nMSR_APN") := list(as.numeric(NA),as.numeric(NA),as.numeric(NA),as.numeric(NA),as.numeric(NA))]
+#remove stop variants
+dt[variant_class == "stop",c("Kd_gAPN","Kd_SE_gAPN","response_gAPN","baseline_gAPN","nMSR_gAPN") := list(as.numeric(NA),as.numeric(NA),as.numeric(NA),as.numeric(NA),as.numeric(NA))]
 ```
 
 Let's take a look at some of the curves with *K*<sub>D,app</sub> values across this distribution to get a broad sense of how things look.
@@ -285,70 +282,60 @@ First, curves with *K*<sub>D,app</sub> fixed at the 10<sup>-5</sup> maximum. We 
 
 ```{r 1e-5_Kd, fig.width=8, fig.height=8, fig.align="center",dpi=300, warning=FALSE, results=FALSE,dev="png"}
 par(mfrow=c(2,2))
-plot.titration(which(dt$library=="pool1A" & dt$Kd_APN > 9e-6)[1])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_APN > 9e-6)[2])
-plot.titration(which(dt$library=="pool2A" & dt$Kd_APN > 9e-6)[1])
-plot.titration(which(dt$library=="pool2A" & dt$Kd_APN > 9e-6)[2])
+plot.titration(which(dt$library=="lib55A" & dt$Kd_gAPN > 9e-6)[1])
+plot.titration(which(dt$library=="lib55A" & dt$Kd_gAPN > 9e-6)[2])
+plot.titration(which(dt$library=="lib56A" & dt$Kd_gAPN > 9e-6)[1])
+plot.titration(which(dt$library=="lib56A" & dt$Kd_gAPN > 9e-6)[2])
 ```
 
 Next, with *K*<sub>D,app</sub> around 10<sup>-6</sup>
 
 ```{r 1e-6_Kd, fig.width=8, fig.height=8, fig.align="center",dpi=300, warning=FALSE, results=FALSE,dev="png"}
 par(mfrow=c(2,2))
-plot.titration(which(dt$library=="pool1A" & dt$Kd_APN > 1e-6 & dt$Kd_APN < 1.2e-6)[1])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_APN > 1e-6 & dt$Kd_APN < 1.2e-6)[2])
-plot.titration(which(dt$library=="pool2A" & dt$Kd_APN > 1e-6 & dt$Kd_APN < 1.2e-6)[1])
-plot.titration(which(dt$library=="pool2A" & dt$Kd_APN > 1e-6 & dt$Kd_APN < 1.2e-6)[2])
+plot.titration(which(dt$library=="lib55A" & dt$Kd_gAPN > 1e-6 & dt$Kd_gAPN < 1.2e-6)[1])
+plot.titration(which(dt$library=="lib55A" & dt$Kd_gAPN > 1e-6 & dt$Kd_gAPN < 1.2e-6)[2])
+plot.titration(which(dt$library=="lib56A" & dt$Kd_gAPN > 1e-6 & dt$Kd_gAPN < 1.2e-6)[1])
+plot.titration(which(dt$library=="lib56A" & dt$Kd_gAPN > 1e-6 & dt$Kd_gAPN < 1.2e-6)[2])
 ```
 
 With *K*<sub>D,app</sub> around 10<sup>-7</sup>, we seem to be picking up more consistent binding signals, though there are some noisy curves.
 
 ```{r 1e-7_Kd, fig.width=8, fig.height=8, fig.align="center",dpi=300, warning=FALSE, results=FALSE,dev="png"}
 par(mfrow=c(2,2))
-plot.titration(which(dt$library=="pool1A" & dt$Kd_APN > 1e-7 & dt$Kd_APN < 1.2e-7)[1])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_APN > 1e-7 & dt$Kd_APN < 1.2e-7)[2])
-plot.titration(which(dt$library=="pool2A" & dt$Kd_APN > 1e-7 & dt$Kd_APN < 1.2e-7)[1])
-plot.titration(which(dt$library=="pool2A" & dt$Kd_APN > 1e-7 & dt$Kd_APN < 1.2e-7)[2])
+plot.titration(which(dt$library=="lib55A" & dt$Kd_gAPN > 1e-7 & dt$Kd_gAPN < 1.2e-7)[1])
+plot.titration(which(dt$library=="lib55A" & dt$Kd_gAPN > 1e-7 & dt$Kd_gAPN < 1.2e-7)[2])
+plot.titration(which(dt$library=="lib56A" & dt$Kd_gAPN > 1e-7 & dt$Kd_gAPN < 1.2e-7)[1])
+plot.titration(which(dt$library=="lib56A" & dt$Kd_gAPN > 1e-7 & dt$Kd_gAPN < 1.2e-7)[2])
 ```
 
-At *K*<sub>D,app</sub> of 10<sup>-8</sup>, we are likewise picking up some signal, perhaps a bit less noise than the -8 curves
+At *K*<sub>D,app</sub> of 10<sup>-8</sup>, starting to look decent
 
 ```{r 1e-8_Kd, fig.width=8, fig.height=8, fig.align="center",dpi=300, warning=FALSE, results=FALSE,dev="png"}
 par(mfrow=c(2,2))
-plot.titration(which(dt$library=="pool1A" & dt$Kd_APN > 1e-8 & dt$Kd_APN < 1.2e-8)[1])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_APN > 1e-8 & dt$Kd_APN < 1.2e-8)[2])
-plot.titration(which(dt$library=="pool2A" & dt$Kd_APN > 1e-8 & dt$Kd_APN < 1.2e-8)[1])
-plot.titration(which(dt$library=="pool2A" & dt$Kd_APN > 1e-8 & dt$Kd_APN < 1.2e-8)[2])
+plot.titration(which(dt$library=="lib55A" & dt$Kd_gAPN > 1e-8 & dt$Kd_gAPN < 1.2e-8)[1])
+plot.titration(which(dt$library=="lib55A" & dt$Kd_gAPN > 1e-8 & dt$Kd_gAPN < 1.2e-8)[2])
+plot.titration(which(dt$library=="lib56A" & dt$Kd_gAPN > 1e-8 & dt$Kd_gAPN < 1.2e-8)[1])
+plot.titration(which(dt$library=="lib56A" & dt$Kd_gAPN > 1e-8 & dt$Kd_gAPN < 1.2e-8)[2])
 ```
 
 Same at *K*<sub>D,app</sub> of 10<sup>-9</sup>.
 
 ```{r 1e-9_Kd, fig.width=8, fig.height=8, fig.align="center",dpi=300, warning=FALSE, results=FALSE,dev="png"}
 par(mfrow=c(2,2))
-plot.titration(which(dt$library=="pool1A" & dt$Kd_APN > 1e-9 & dt$Kd_APN < 1.2e-9)[1])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_APN > 1e-9 & dt$Kd_APN < 1.2e-9)[2])
-plot.titration(which(dt$library=="pool2A" & dt$Kd_APN > 1e-9 & dt$Kd_APN < 1.2e-9)[1])
-plot.titration(which(dt$library=="pool2A" & dt$Kd_APN > 1e-9 & dt$Kd_APN < 1.2e-9)[2])
+plot.titration(which(dt$library=="lib55A" & dt$Kd_gAPN > 1e-9 & dt$Kd_gAPN < 1.2e-9)[1])
+plot.titration(which(dt$library=="lib55A" & dt$Kd_gAPN > 1e-9 & dt$Kd_gAPN < 1.2e-9)[2])
+plot.titration(which(dt$library=="lib56A" & dt$Kd_gAPN > 1e-9 & dt$Kd_gAPN < 1.2e-9)[1])
+plot.titration(which(dt$library=="lib56A" & dt$Kd_gAPN > 1e-9 & dt$Kd_gAPN < 1.2e-9)[2])
 ```
 
-*K*<sub>D,app</sub> of 10<sup>-10</sup>
+*K*<sub>D,app</sub> of 10<sup>-10</sup> look good, this is the end of the range really.
 
 ```{r 1e-10_Kd, fig.width=8, fig.height=8, fig.align="center",dpi=300, warning=FALSE, results=FALSE,dev="png"}
 par(mfrow=c(2,2))
-plot.titration(which(dt$library=="pool1A" & dt$Kd_APN > 1e-10 & dt$Kd_APN < 1.2e-10)[1])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_APN > 1e-10 & dt$Kd_APN < 1.2e-10)[2])
-plot.titration(which(dt$library=="pool2A" & dt$Kd_APN > 1e-10 & dt$Kd_APN < 1.2e-10)[1])
-plot.titration(which(dt$library=="pool2A" & dt$Kd_APN > 1e-10 & dt$Kd_APN < 1.2e-10)[2])
-```
-
-*K*<sub>D,app</sub> ~ 10<sup>-11</sup>. This is higher affinity than the main bulk of curves.
-
-```{r 1e-11_Kd, fig.width=8, fig.height=8, fig.align="center",dpi=300, warning=FALSE, results=FALSE,dev="png"}
-par(mfrow=c(2,2))
-plot.titration(which(dt$library=="pool1A" & dt$Kd_APN > 1e-11 & dt$Kd_APN < 2e-11)[1])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_APN > 1e-11 & dt$Kd_APN < 2e-11)[2])
-plot.titration(which(dt$library=="pool2A" & dt$Kd_APN > 1e-11 & dt$Kd_APN < 2e-11)[1])
-plot.titration(which(dt$library=="pool2A" & dt$Kd_APN > 1e-11 & dt$Kd_APN < 2e-11)[2])
+plot.titration(which(dt$library=="lib55A" & dt$Kd_gAPN < 1.2e-10)[1])
+plot.titration(which(dt$library=="lib55A" & dt$Kd_gAPN < 1.2e-10)[2])
+plot.titration(which(dt$library=="lib56A" & dt$Kd_gAPN < 1.2e-10)[1])
+plot.titration(which(dt$library=="lib56A" & dt$Kd_gAPN < 1.2e-10)[2])
 ```
 
 ## Data filtering by fit quality
@@ -358,41 +345,37 @@ Next, let's filter out poor fits using the value we previously computed, the *no
 Look at nMSR metric versus avgcoutn value, and layer on value of nMSR filtering based on 20x the global median (and percentage filtered from each background). Filter to NA fits with nMSR above this cutoff
 
 
-```{r nMSR_v_cell_count, fig.width=8, fig.height=8, fig.align="center",dpi=300,dev="png"}
-median.nMSR <- median(dt$nMSR_APN,na.rm=T)
-threshold <- 40
-par(mfrow=c(2,2))
-for(bg in c("Wuhan_Hu_1","BA1","BA2")){
-  plot(log10(dt[target==bg,TiteSeq_avgcount]),dt[target==bg,nMSR_APN],main=bg,pch=19,col="#00000010",xlab="average cell count (log10)",ylab="nMSR",xlim=c(0,6),ylim=c(0,0.5))
-  abline(h=threshold*median.nMSR,col="red",lty=2)
-  legend("topleft",bty="n",cex=1,legend=paste(format(100*nrow(dt[target==bg & nMSR_APN > threshold*median.nMSR & !is.na(nMSR_APN),])/nrow(dt[target==bg & !is.na(nMSR_APN),]),digits=3),"%"))
-}
+```{r nMSR_v_cell_count, fig.width=4, fig.height=4, fig.align="center",dpi=300,dev="png"}
+median.nMSR <- median(dt$nMSR_gAPN,na.rm=T)
+threshold <- 20
+plot(log10(dt[,TiteSeq_avgcount]),dt[,nMSR_gAPN],main="PD-CoV",pch=19,col="#00000010",xlab="average cell count (log10)",ylab="nMSR",xlim=c(0,6),ylim=c(0,0.5))
+abline(h=threshold*median.nMSR,col="red",lty=2)
+legend("topleft",bty="n",cex=1,legend=paste(format(100*nrow(dt[nMSR_gAPN > threshold*median.nMSR & !is.na(nMSR_gAPN),])/nrow(dt[!is.na(nMSR_gAPN),]),digits=3),"%"))
 
-dt[nMSR_APN > threshold*median.nMSR,c("Kd_APN","Kd_SE_APN","response_APN","baseline_APN") := list(as.numeric(NA),as.numeric(NA),as.numeric(NA),as.numeric(NA))]
+dt[nMSR_gAPN > threshold*median.nMSR,c("Kd_gAPN","Kd_SE_gAPN","response_gAPN","baseline_gAPN") := list(as.numeric(NA),as.numeric(NA),as.numeric(NA),as.numeric(NA))]
 
 ```
 
 Last, convert our *K*<sub>D,app</sub> to 1) a log<sub>10</sub>-scale, and 2) *K*<sub>A,app</sub>, the inverse of *K*<sub>D,app</sub>, such that higher values are associated with tighter binding, as is more intuitive. (If we want to continue to discuss in terms of *K*<sub>D,app</sub>, since people are often more familiar with *K*<sub>D</sub>, we can refer to the log<sub>10</sub>(*K*<sub>A,app</sub>) as -log<sub>10</sub>(*K*<sub>D,app</sub>), which are identical.
 
 ```{r convert_log10Ka}
-dt[,log10Ka := -log10(Kd_APN),by=c("barcode","library")]
+dt[,log10Ka_gAPN := -log10(Kd_gAPN),by=c("barcode","library")]
 ```
 
-Let's visualize the final binding measurements as violin plots for the different wildtype targets. In next notebook, we'll evaluate count depth and possibly apply further filtering to remove low-count expression estimates
+Let's visualize the final binding measurements as violin plots for the different variant types. In next notebook, we'll evaluate count depth and possibly apply further filtering
 
-```{r binding_distribution_vioplot, echo=T, fig.width=6, fig.height=18, fig.align="center", dpi=300,dev="png"}
-p1 <- ggplot(dt[!is.na(log10Ka),],aes(x=variant_class,y=log10Ka))+
+```{r binding_distribution_vioplot, echo=T, fig.width=6, fig.height=6, fig.align="center", dpi=300,dev="png"}
+p1 <- ggplot(dt[!is.na(log10Ka_gAPN),],aes(x=variant_class,y=log10Ka_gAPN))+
   geom_violin(scale="width")+stat_summary(fun=median,geom="point",size=1)+
-  ggtitle("gAPN, log10(Ka)")+xlab("variant class")+theme(axis.text.x=element_text(angle=-90,hjust=0))+
-  facet_wrap(~target,nrow=4)
+  ggtitle("gAPN, log10(Ka)")+xlab("variant class")+theme(axis.text.x=element_text(angle=-90,hjust=0))
 
 grid.arrange(p1,ncol=1)
 
 #save pdf
-invisible(dev.print(pdf, paste(config$Titeseq_Kds_dir,"/violin-plot_log10Ka-by-target.pdf",sep="")))
+invisible(dev.print(pdf, paste(config$binding_scores_dir,"/violin-plot_log10Ka_gAPN-by-target.pdf",sep="")))
 ```
 
-We have generated binding measurements for `r round(nrow(dt[!is.na(log10Ka)])/nrow(dt)*100,digits=2)`% of the barcodes in our libraries.
+We have generated binding measurements for `r round(nrow(dt[!is.na(log10Ka_gAPN)])/nrow(dt)*100,digits=2)`% of the barcodes in our libraries.
 
 ## Data Output
 
@@ -400,9 +383,9 @@ Finally, let's output our measurements for downstream analyses.
 
 ```{r output_data}
 dt[,.(library,barcode,target,variant_class,aa_substitutions,n_aa_substitutions,
-     TiteSeq_avgcount,log10Ka)] %>%
+     TiteSeq_avgcount,log10Ka_gAPN)] %>%
   mutate_if(is.numeric, round, digits=6) %>%
-  write.csv(file=config$Titeseq_Kds_file, row.names=F)
+  write.csv(file=config$gAPN_Kds_file, row.names=F)
 
 ```
 

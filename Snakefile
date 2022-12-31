@@ -49,10 +49,12 @@ rule make_summary:
         barcode_variant_table_PDCoV=config['codon_variant_table_file_PDCoV'],
         variant_counts_file=config['variant_counts_file'],
         count_variants=nb_markdown('count_variants.ipynb'),
-        fit_titrations='results/summary/compute_binding_Kd.md',
-        variant_Kds_file=config['Titeseq_Kds_file'],
-        calculate_expression='results/summary/compute_expression_meanF.md',
-        variant_expression_file=config['expression_sortseq_file'],
+        fit_gAPN_titrations='results/summary/compute_gAPN_Kd.md',
+        gAPN_Kds_file=config['gAPN_Kds_file'],
+        fit_hAPN_meanF='results/summary/compute_hAPN_meanF.md',
+        hAPN_meanF_file=config['hAPN_meanF_file'],
+        fit_pAPN_meanF='results/summary/compute_pAPN_meanF.md',
+        pAPN_meanF_file=config['pAPN_meanF_file'],        
         collapse_scores='results/summary/collapse_scores.md',
         mut_phenos_file=config['final_variant_scores_mut_file'],
         heatmap_viz=os.path.join(config['visualization_dir'], "heatmap.html")
@@ -79,15 +81,15 @@ rule make_summary:
             
             1. Process PacBio CCSs for [PDCoV libraries]({path(input.process_ccs_PDCoV)}). Creates barcode-variant lookup table, which can be found [here]({path(input.barcode_variant_table_PDCoV)}),.
             
-            3. [Count variants by barcode]({path(input.count_variants)}).
+            2. [Count variants by barcode]({path(input.count_variants)}).
                Creates a [variant counts file]({path(input.variant_counts_file)})
                giving counts of each barcoded variant in each condition.
 
-            4. [Fit titration curves]({path(input.fit_titrations)}) to calculate per-barcode K<sub>D</sub>, recorded in [this file]({path(input.variant_Kds_file)}).
+            3. [Fit gAPN titration curves]({path(input.fit_gAPN_titrations)}) to calculate per-barcode K<sub>D</sub>, recorded in [this file]({path(input.gAPN_Kds_file)}).
             
-            5. [Analyze Sort-seq]({path(input.calculate_expression)}) to calculate per-barcode RBD expression, recorded in [this file]({path(input.variant_expression_file)}).
+            4. Analyze single-concentration sort-seq experients for [hAPN]({path(input.fit_hAPN_meanF)}) and [pAPN]({path(input.fit_pAPN_meanF)}) to calculate per-barcode binding MFI, recorded in these files for [hAPN]({path(input.hAPN_meanF_file)}) and [pAPN]({path(input.pAPN_meanF_file)}).
             
-            6. [Derive final genotype-level phenotypes from replicate barcoded sequences]({path(input.collapse_scores)}).
+            5. [Derive final genotype-level phenotypes from replicate barcoded sequences]({path(input.collapse_scores)}).
                Generates final phenotypes, recorded in [this file]({path(input.mut_phenos_file)}).
             
             7. [Analyze patterns of epistasis in the DMS data and in SARS-CoV-2 genomic data]({path(input.epistatic_shifts)}).
@@ -143,8 +145,9 @@ rule epistatic_shifts:
 
 rule collapse_scores:
     input:
-        config['Titeseq_Kds_file'],
-        config['expression_sortseq_file'],
+        config['gAPN_Kds_file'],
+        config['hAPN_meanF_file'],
+        config['pAPN_meanF_file'],
     output:
         config['final_variant_scores_mut_file'],
         md='results/summary/collapse_scores.md',
@@ -162,20 +165,20 @@ rule collapse_scores:
         mv {params.md_files} {output.md_files}
         """
 
-rule fit_titrations:
+rule fit_pAPN_MFI:
     input:
         config['codon_variant_table_file_PDCoV'],
         config['variant_counts_file']
     output:
-        config['Titeseq_Kds_file'],
-        md='results/summary/compute_binding_Kd.md',
-        md_files=directory('results/summary/compute_binding_Kd_files')
+        config['pAPN_meanF_file'],
+        md='results/summary/compute_pAPN_meanF.md',
+        md_files=directory('results/summary/compute_pAPN_meanF_files')
     envmodules:
         'R/3.6.2-foss-2019b'
     params:
-        nb='compute_binding_Kd.Rmd',
-        md='compute_binding_Kd.md',
-        md_files='compute_binding_Kd_files'
+        nb='compute_pAPN_meanF.Rmd',
+        md='compute_pAPN_meanF.md',
+        md_files='compute_pAPN_meanF_files'
     shell:
         """
         R -e \"rmarkdown::render(input=\'{params.nb}\')\";
@@ -183,20 +186,41 @@ rule fit_titrations:
         mv {params.md_files} {output.md_files}
         """
 
-rule calculate_expression:
+rule fit_hAPN_MFI:
     input:
         config['codon_variant_table_file_PDCoV'],
         config['variant_counts_file']
     output:
-        config['expression_sortseq_file'],
-        md='results/summary/compute_expression_meanF.md',
-        md_files=directory('results/summary/compute_expression_meanF_files')
+        config['hAPN_meanF_file'],
+        md='results/summary/compute_hAPN_meanF.md',
+        md_files=directory('results/summary/compute_hAPN_meanF_files')
     envmodules:
         'R/3.6.2-foss-2019b'
     params:
-        nb='compute_expression_meanF.Rmd',
-        md='compute_expression_meanF.md',
-        md_files='compute_expression_meanF_files'
+        nb='compute_hAPN_meanF.Rmd',
+        md='compute_hAPN_meanF.md',
+        md_files='compute_hAPN_meanF_files'
+    shell:
+        """
+        R -e \"rmarkdown::render(input=\'{params.nb}\')\";
+        mv {params.md} {output.md};
+        mv {params.md_files} {output.md_files}
+        """
+
+rule fit_gAPN_titrations:
+    input:
+        config['codon_variant_table_file_PDCoV'],
+        config['variant_counts_file']
+    output:
+        config['gAPN_Kds_file'],
+        md='results/summary/compute_gAPN_Kd.md',
+        md_files=directory('results/summary/compute_gAPN_Kd_files')
+    envmodules:
+        'R/3.6.2-foss-2019b'
+    params:
+        nb='compute_gAPN_Kd.Rmd',
+        md='compute_gAPN_Kd.md',
+        md_files='compute_gAPN_Kd_files'
     shell:
         """
         R -e \"rmarkdown::render(input=\'{params.nb}\')\";
