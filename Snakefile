@@ -91,10 +91,8 @@ rule make_summary:
             
             5. [Derive final genotype-level phenotypes from replicate barcoded sequences]({path(input.collapse_scores)}).
                Generates final phenotypes, recorded in [this file]({path(input.mut_phenos_file)}).
-            
-            7. [Analyze patterns of epistasis in the DMS data and in SARS-CoV-2 genomic data]({path(input.epistatic_shifts)}).
-            
-            8. Make interactive data visualizations, available [here](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS_Omicron/)
+
+            6. Make interactive data visualizations, available [here](https://jbloomlab.github.io/PD-CoV-RBD_DMS/)
 
             """
             ).strip())
