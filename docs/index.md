@@ -9,7 +9,7 @@ layout: default
 
 We performed deep mutational scans to measure the impact on APN binding of all single amino-acid mutations in the Porcine Delta-CoV RBD. We measured binding affinity (log10Ka) for the galline APN ortholog. For human and porcine APN, we measured the mean fluorescence intensity (MFI) of each variant at 1uM ligand.
 
-Here, we link to two interactive visualizations that enable exploration of the data from these deep mutational scans across SARS_CoV-2 variants.
+Here, we link to two interactive visualizations that enable exploration of the data from these deep mutational scans.
 
 
 ### Instructions 
