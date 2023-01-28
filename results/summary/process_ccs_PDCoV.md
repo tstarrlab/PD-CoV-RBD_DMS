@@ -138,6 +138,20 @@ display(HTML(pacbio_runs.to_html(index=False)))
       <td>lib56_PDCoV_221209</td>
       <td>results/ccs/lib56_PDCoV_221209_ccs.fastq.gz</td>
     </tr>
+    <tr>
+      <td>lib55</td>
+      <td>PDCoV</td>
+      <td>230126</td>
+      <td>lib55_PDCoV_230126</td>
+      <td>results/ccs/lib55_PDCoV_230126_ccs.fastq.gz</td>
+    </tr>
+    <tr>
+      <td>lib56</td>
+      <td>PDCoV</td>
+      <td>230126</td>
+      <td>lib56_PDCoV_230126</td>
+      <td>results/ccs/lib56_PDCoV_230126_ccs.fastq.gz</td>
+    </tr>
   </tbody>
 </table>
 
@@ -568,7 +582,7 @@ print(f"Read {len(processed_ccs)} CCSs from {nlibs} libraries and {ntargets} tar
 display(HTML(processed_ccs.head().to_html(index=False)))
 ```
 
-    Read 1993106 CCSs from 2 libraries and 1 targets.
+    Read 2151002 CCSs from 2 libraries and 1 targets.
 
 
 
@@ -671,15 +685,15 @@ display(HTML(
     <tr>
       <th rowspan="2" valign="top">PDCoV</th>
       <th>lib55</th>
-      <td>1100381</td>
-      <td>66459</td>
-      <td>16.56</td>
+      <td>1190514</td>
+      <td>66857</td>
+      <td>17.81</td>
     </tr>
     <tr>
       <th>lib56</th>
-      <td>892725</td>
-      <td>68719</td>
-      <td>12.99</td>
+      <td>960488</td>
+      <td>69131</td>
+      <td>13.89</td>
     </tr>
   </tbody>
 </table>
@@ -932,58 +946,58 @@ display(HTML(empirical_acc.to_html(index=False)))
   <tbody>
     <tr>
       <td>lib55</td>
-      <td>0.960688</td>
+      <td>0.962722</td>
       <td>retained</td>
-      <td>967147</td>
+      <td>1052179</td>
       <td>False</td>
     </tr>
     <tr>
       <td>lib56</td>
-      <td>0.891198</td>
+      <td>0.898284</td>
       <td>retained</td>
-      <td>755482</td>
+      <td>819447</td>
       <td>False</td>
     </tr>
     <tr>
       <td>lib55</td>
-      <td>0.975140</td>
+      <td>0.976758</td>
       <td>retained, no indel</td>
-      <td>947859</td>
+      <td>1031776</td>
       <td>True</td>
     </tr>
     <tr>
       <td>lib56</td>
-      <td>0.918860</td>
+      <td>0.924694</td>
       <td>retained, no indel</td>
-      <td>728572</td>
+      <td>791652</td>
       <td>True</td>
     </tr>
     <tr>
       <td>lib55</td>
-      <td>0.968140</td>
+      <td>0.969867</td>
       <td>10X accuracy</td>
-      <td>915097</td>
+      <td>997895</td>
       <td>False</td>
     </tr>
     <tr>
       <td>lib56</td>
-      <td>0.907005</td>
+      <td>0.913355</td>
       <td>10X accuracy</td>
-      <td>704160</td>
+      <td>766560</td>
       <td>False</td>
     </tr>
     <tr>
       <td>lib55</td>
-      <td>0.977166</td>
+      <td>0.978682</td>
       <td>10X accuracy, no indel</td>
-      <td>902098</td>
+      <td>984025</td>
       <td>False</td>
     </tr>
     <tr>
       <td>lib56</td>
-      <td>0.925997</td>
+      <td>0.931478</td>
       <td>10X accuracy, no indel</td>
-      <td>685992</td>
+      <td>747697</td>
       <td>False</td>
     </tr>
   </tbody>
@@ -1073,21 +1087,21 @@ display(HTML(consensus.head().to_html(index=False)))
       <td>AAAAAAAAAAAACGAC</td>
       <td>PDCoV</td>
       <td>G34T C35T C36G A331G C332A C333A</td>
-      <td>16</td>
+      <td>20</td>
     </tr>
     <tr>
       <td>lib55</td>
       <td>AAAAAAAAAACCTGTG</td>
       <td>PDCoV</td>
       <td>T133G T134A C135T</td>
-      <td>17</td>
+      <td>18</td>
     </tr>
     <tr>
       <td>lib55</td>
       <td>AAAAAAAAAGGGGTCC</td>
       <td>PDCoV</td>
       <td>G251A</td>
-      <td>9</td>
+      <td>11</td>
     </tr>
     <tr>
       <td>lib55</td>
@@ -1140,7 +1154,7 @@ display(HTML(consensus.head().to_html(index=False)))
       <td>AAAAAAAAAAAACGAC</td>
       <td>PDCoV</td>
       <td>G34T C35T C36G A331G C332A C333A</td>
-      <td>16</td>
+      <td>20</td>
       <td>G34T C35T C36G A331G C332A C333A</td>
       <td>0</td>
     </tr>
@@ -1149,7 +1163,7 @@ display(HTML(consensus.head().to_html(index=False)))
       <td>AAAAAAAAAACCTGTG</td>
       <td>PDCoV</td>
       <td>T133G T134A C135T</td>
-      <td>17</td>
+      <td>18</td>
       <td>T133G T134A C135T</td>
       <td>0</td>
     </tr>
@@ -1158,7 +1172,7 @@ display(HTML(consensus.head().to_html(index=False)))
       <td>AAAAAAAAAGGGGTCC</td>
       <td>PDCoV</td>
       <td>G251A</td>
-      <td>9</td>
+      <td>11</td>
       <td>G251A</td>
       <td>0</td>
     </tr>
@@ -1262,12 +1276,12 @@ _ = p.draw()
     <tr>
       <td>lib55</td>
       <td>PDCoV</td>
-      <td>44575</td>
+      <td>44779</td>
     </tr>
     <tr>
       <td>lib56</td>
       <td>PDCoV</td>
-      <td>30364</td>
+      <td>30741</td>
     </tr>
   </tbody>
 </table>
@@ -1320,21 +1334,21 @@ display(HTML(
       <td>lib55</td>
       <td>AAAAAAAAAAAACGAC</td>
       <td>G34T C35T C36G A331G C332A C333A</td>
-      <td>16</td>
+      <td>20</td>
     </tr>
     <tr>
       <td>PDCoV</td>
       <td>lib55</td>
       <td>AAAAAAAAAACCTGTG</td>
       <td>T133G T134A C135T</td>
-      <td>17</td>
+      <td>18</td>
     </tr>
     <tr>
       <td>PDCoV</td>
       <td>lib55</td>
       <td>AAAAAAAAAGGGGTCC</td>
       <td>G251A</td>
-      <td>9</td>
+      <td>11</td>
     </tr>
     <tr>
       <td>PDCoV</td>
@@ -1379,28 +1393,28 @@ display(HTML(dropped.head().to_html(index=False)))
       <td>AAAAAAAAAAGTAGGA</td>
       <td>PDCoV</td>
       <td>subs diff too large</td>
-      <td>17</td>
+      <td>19</td>
     </tr>
     <tr>
       <td>lib55</td>
       <td>AAAAAAAAATAGTACT</td>
       <td>PDCoV</td>
       <td>subs diff too large</td>
-      <td>11</td>
+      <td>12</td>
     </tr>
     <tr>
       <td>lib55</td>
       <td>AAAAAAAAATATCTAA</td>
       <td>PDCoV</td>
       <td>subs diff too large</td>
-      <td>59</td>
+      <td>66</td>
     </tr>
     <tr>
       <td>lib55</td>
       <td>AAAAAAAACCGAGTAT</td>
       <td>PDCoV</td>
       <td>subs diff too large</td>
-      <td>60</td>
+      <td>63</td>
     </tr>
     <tr>
       <td>lib55</td>
@@ -1515,9 +1529,9 @@ display(HTML(
   <tbody>
     <tr>
       <th>PDCoV</th>
-      <td>44575</td>
-      <td>30364</td>
-      <td>74939</td>
+      <td>44779</td>
+      <td>30741</td>
+      <td>75520</td>
     </tr>
   </tbody>
 </table>
@@ -1706,11 +1720,11 @@ display(HTML(
     </tr>
     <tr>
       <th>1</th>
-      <td>3</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>2163</td>
+      <td>2165</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">lib56</th>
@@ -1719,11 +1733,11 @@ display(HTML(
     </tr>
     <tr>
       <th>1</th>
-      <td>3</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>2162</td>
+      <td>2163</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">all libraries</th>
@@ -1746,33 +1760,33 @@ display(HTML(
     </tr>
     <tr>
       <th>1</th>
-      <td>12</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>&gt;1</th>
+      <td>2196</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">lib56</th>
+      <th>0</th>
+      <td>73</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>13</td>
     </tr>
     <tr>
       <th>&gt;1</th>
       <td>2194</td>
     </tr>
     <tr>
-      <th rowspan="3" valign="top">lib56</th>
-      <th>0</th>
-      <td>71</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>16</td>
-    </tr>
-    <tr>
-      <th>&gt;1</th>
-      <td>2193</td>
-    </tr>
-    <tr>
       <th rowspan="3" valign="top">all libraries</th>
       <th>0</th>
-      <td>63</td>
+      <td>65</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>15</td>
+      <td>13</td>
     </tr>
     <tr>
       <th>&gt;1</th>
@@ -1787,16 +1801,16 @@ display(HTML(
     </tr>
     <tr>
       <th>1</th>
-      <td>3</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>2163</td>
+      <td>2165</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">lib56</th>
       <th>0</th>
-      <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>1</th>
@@ -1804,7 +1818,7 @@ display(HTML(
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>2160</td>
+      <td>2161</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">all libraries</th>
@@ -1813,11 +1827,11 @@ display(HTML(
     </tr>
     <tr>
       <th>1</th>
-      <td>1</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>2165</td>
+      <td>2166</td>
     </tr>
     <tr>
       <th rowspan="9" valign="top">True</th>
@@ -1827,11 +1841,11 @@ display(HTML(
     </tr>
     <tr>
       <th>1</th>
-      <td>12</td>
+      <td>10</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>2183</td>
+      <td>2185</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">lib56</th>
@@ -1840,24 +1854,24 @@ display(HTML(
     </tr>
     <tr>
       <th>1</th>
-      <td>13</td>
+      <td>12</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>2181</td>
+      <td>2182</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">all libraries</th>
       <th>0</th>
-      <td>76</td>
+      <td>77</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>17</td>
+      <td>15</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>2187</td>
+      <td>2188</td>
     </tr>
   </tbody>
 </table>
@@ -1942,7 +1956,7 @@ display(HTML(
       <td>PDCoV</td>
       <td>lib55</td>
       <td>AAAAAAAAAAAACGAC</td>
-      <td>16</td>
+      <td>20</td>
       <td>GCC12TTG ACC111GAA</td>
       <td>A12L T111E</td>
       <td>2</td>
@@ -1952,7 +1966,7 @@ display(HTML(
       <td>PDCoV</td>
       <td>lib55</td>
       <td>AAAAAAAAAACCTGTG</td>
-      <td>17</td>
+      <td>18</td>
       <td>TTC45GAT</td>
       <td>F45D</td>
       <td>1</td>
@@ -1962,7 +1976,7 @@ display(HTML(
       <td>PDCoV</td>
       <td>lib55</td>
       <td>AAAAAAAAAGGGGTCC</td>
-      <td>9</td>
+      <td>11</td>
       <td>TGT84TAT</td>
       <td>C84Y</td>
       <td>1</td>

@@ -1,3 +1,5 @@
 library,bg,run,ccs
 lib55,PDCoV,221209,/fh/fast/bloom_j/SR/ngs/pacbio/221209_Caelan_Tyler/r64272e_20221209_210327/4_D01/bc2020--bc2020/m64272e_221211_235718.hifi_reads.bc2020--bc2020.fastq.gz
 lib56,PDCoV,221209,/fh/fast/bloom_j/SR/ngs/pacbio/221209_Caelan_Tyler/r64272e_20221209_210327/4_D01/bc2021--bc2021/m64272e_221211_235718.hifi_reads.bc2021--bc2021.fastq.gz
+lib55,PDCoV,230126,/fh/fast/bloom_j/computational_notebooks/tstarr/2022/fastq/m64272e_230126_100200.hifi_reads.bc2028--bc2028.fastq
+lib56,PDCoV,230126,/fh/fast/bloom_j/computational_notebooks/tstarr/2022/fastq/m64272e_230126_100200.hifi_reads.bc2029--bc2029.fastq

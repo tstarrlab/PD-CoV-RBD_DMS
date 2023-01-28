@@ -132,14 +132,14 @@ for(i in 1:nrow(barcode_runs)){
 }
 ```
 
-    ## [1] "read:cell ratio for lib55 pAPN_01_bin1 is 1.14473151521041"
-    ## [1] "read:cell ratio for lib55 pAPN_01_bin2 is 1.88063335207199"
-    ## [1] "read:cell ratio for lib55 pAPN_01_bin3 is 3.41280831186973"
-    ## [1] "read:cell ratio for lib55 pAPN_01_bin4 is 1.1950884685784"
-    ## [1] "reads < cells for lib56 pAPN_01_bin1 , un-normalized (ratio 0.953227253824772 )"
-    ## [1] "reads < cells for lib56 pAPN_01_bin2 , un-normalized (ratio 0.816877011578897 )"
-    ## [1] "read:cell ratio for lib56 pAPN_01_bin3 is 1.2613946240748"
-    ## [1] "read:cell ratio for lib56 pAPN_01_bin4 is 1.59330220576397"
+    ## [1] "read:cell ratio for lib55 pAPN_01_bin1 is 1.14110447895182"
+    ## [1] "read:cell ratio for lib55 pAPN_01_bin2 is 1.87210403469738"
+    ## [1] "read:cell ratio for lib55 pAPN_01_bin3 is 3.39899594010564"
+    ## [1] "read:cell ratio for lib55 pAPN_01_bin4 is 1.20241000610128"
+    ## [1] "reads < cells for lib56 pAPN_01_bin1 , un-normalized (ratio 0.956429067636255 )"
+    ## [1] "reads < cells for lib56 pAPN_01_bin2 , un-normalized (ratio 0.819559477758381 )"
+    ## [1] "read:cell ratio for lib56 pAPN_01_bin3 is 1.26987050087946"
+    ## [1] "read:cell ratio for lib56 pAPN_01_bin4 is 1.60521655127999"
 
 ``` r
 #annotate each barcode as to whether it's a homolog variant, SARS-CoV-2 wildtype, synonymous muts only, stop, nonsynonymous, >1 nonsynonymous mutations
@@ -258,7 +258,7 @@ grid.arrange(p1,ncol=1)
 invisible(dev.print(pdf, paste(config$binding_scores_dir,"/violin-plot_meanF-by-target_pAPN.pdf",sep="")))
 ```
 
-We have generated pAPN_meanF measurements for 71.68% of the barcodes in
+We have generated pAPN_meanF measurements for 71.32% of the barcodes in
 our libraries.
 
 ## Data Output

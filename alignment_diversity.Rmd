@@ -1,0 +1,123 @@
+---
+title: "Relationship between DMS data and Delta-CoV RBD natural diversity"
+author: "Tyler Starr"
+date: "1/17/2023"
+output:
+  github_document:
+    toc: true
+    html_preview: false
+editor_options: 
+  chunk_output_type: inline
+---
+
+This notebook analyzes DMS meausurements in relation to natural sequence diversity in a broader alignment of delta-CoV RBDs
+
+## Setup
+
+```{r setup, message=FALSE, warning=FALSE, error=FALSE}
+require("knitr")
+knitr::opts_chunk$set(echo = T)
+knitr::opts_chunk$set(dev.args = list(png = list(type = "cairo")))
+
+#list of packages to install/load
+packages = c("yaml","data.table","tidyverse","gridExtra","bio3d")
+#install any packages not already installed
+installed_packages <- packages %in% rownames(installed.packages())
+if(any(installed_packages == F)){
+  install.packages(packages[!installed_packages])
+}
+#load packages
+invisible(lapply(packages, library, character.only=T))
+
+#read in config file
+config <- read_yaml("config.yaml")
+
+#read in file giving concordance between RBD numbering and SARS-CoV-2 Spike numbering
+RBD_sites <- data.table(read.csv(file="data/RBD_sites.csv",stringsAsFactors=F))
+
+#make output directory
+if(!file.exists(config$alignment_diversity_dir)){
+  dir.create(file.path(config$alignment_diversity_dir))
+}
+```
+
+Session info for reproducing environment:
+```{r print_sessionInfo}
+sessionInfo()
+```
+
+Read in tables of variant effects on binding and expression for single mutations to the SARS-CoV-2 RBD and for homolog RBDs.
+
+```{r read_data}
+dt <- data.table(read.csv(file=config$final_variant_scores_mut_file,stringsAsFactors = F))
+
+# #add mean, max, min mut effects per site annotations
+RBD_sites[,mean_gAPN := mean(dt[position==site_spike & wildtype != mutant & mutant != "*",delta_bind_gAPN],na.rm=T),by=site_spike]
+RBD_sites[,mean_hAPN := mean(dt[position==site_spike & wildtype != mutant & mutant != "*",delta_bind_hAPN],na.rm=T),by=site_spike]
+RBD_sites[,mean_pAPN := mean(dt[position==site_spike & wildtype != mutant & mutant != "*",delta_bind_pAPN],na.rm=T),by=site_spike]
+
+```
+
+## Relationship between DMS mutational tolerance and natural sequence diversity
+
+We compare our measurements of mutational tolerance to natural diversity from our alignment of delta-CoV RBD sequences.
+
+Within each of these alignments, we compute the entropy of the alignment column (and the related effective number amino acids N<sub>eff</sub>), and compare this value to the average effect of mutations at the site from our DMS data for binding and expression. We can see the sites where we observe considerable mutational constraint exhibit reduced amino acid diversity across the delta-CoV, and the PD-CoV clade in particular.
+
+```{r natural_diversity_v_mean_effects, fig.width=7, fig.height=7, fig.align="center",dpi=300,dev="png",echo=T}
+alignment <- read.fasta(file=config$dcov_alignment)
+#remove columns that is gap in the reference sequence
+alignment$ali <- alignment$ali[,which(alignment$ali[which(alignment$id=="PDCoV_Illinois121_2014_KJ481931/303-416"),]!="-")]
+
+#get indices for alignment rows which correspond to sequences from each of the groups (PDCoV and avian)
+PDCoV <- which(alignment$id %like% "PDCoV")
+avianCoV <- which(!(alignment$id %like% "PDCoV"))
+
+# #make a second alignment which is only the PDCoV sequences
+# alignment_PDCoV <- alignment;alignment_PDCoV$ali <- alignment$ali[c(PDCoV),]; alignment_PDCoV$id <- alignment$id[c(PDCoV)]
+
+entropy <- entropy(alignment)$H
+RBD_sites$entropy <- entropy
+RBD_sites$Neff <- 2^(entropy)
+
+#plot mean effect on binding and expression versus Neff
+par(mfrow=c(2,2))
+plot(RBD_sites$Neff,RBD_sites$mean_gAPN,pch=16,col="#00000067",ylab="site mean effect of mutation on gAPN binding",xlab="site N_eff")
+plot(RBD_sites$Neff,RBD_sites$mean_hAPN,pch=16,col="#00000067",ylab="site mean effect of mutation on hAPN binding",xlab="site N_eff")
+plot(RBD_sites$Neff,RBD_sites$mean_pAPN,pch=16,col="#00000067",ylab="site mean effect of mutation on pAPN binding",xlab="site N_eff")
+
+
+```
+
+## Predicting affinities of sequences from single-mut measurements
+
+Predict affinities of PDCoV variants (and maybe a few of the closer/alignable avian CoV sequences) from adding their component mutations.
+
+```{r predict_homolog_affinities_PDCoV, echo=F}
+dt_PDCoV <- data.table(data.frame(alignment_name = alignment$id[PDCoV]))
+
+for(i in 1:nrow(dt_PDCoV)){
+  subs <- c()
+  for(j in 1:ncol(alignment$ali)){
+    if(!(alignment$ali[which(alignment$id==dt_PDCoV[i,alignment_name]),j] %in% c("-","X")) & alignment$ali[which(alignment$id=="PDCoV_Illinois121_2014_KJ481931/303-416"),j] != alignment$ali[which(alignment$id==dt_PDCoV[i,alignment_name]),j]){
+      subs <- c(subs,paste(alignment$ali[which(alignment$id=="PDCoV_Illinois121_2014_KJ481931/303-416"),j],
+                           j+config$site_number_offset,
+                           alignment$ali[which(alignment$id==dt_PDCoV[i,alignment_name]),j],sep=""))
+    }
+  }
+  dt_PDCoV$n_diff[i] <- length(subs)
+  dt_PDCoV$sum_bind_gAPN[i] <- sum(dt[mutation %in% subs,delta_bind_gAPN])
+  dt_PDCoV$sum_bind_hAPN[i] <- sum(dt[mutation %in% subs,delta_bind_hAPN])
+  dt_PDCoV$sum_bind_pAPN[i] <- sum(dt[mutation %in% subs,delta_bind_pAPN])
+  if(length(subs)>0){
+    dt_PDCoV$subs[i] <- list(subs)
+  }else{
+    dt_PDCoV$subs[i] <- list("NA")
+  }
+}
+
+kable(dt_PDCoV[,.(alignment_name,n_diff,sum_bind_gAPN,sum_bind_hAPN,sum_bind_pAPN,subs)],
+      col.names=c("homolog","# RBD diff","expected binding, gAPN","expected binding, hAPN","expected binding, pAPN","substitutions"))
+
+```
+
