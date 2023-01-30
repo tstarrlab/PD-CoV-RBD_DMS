@@ -1,15 +1,15 @@
-# Deep mutational scanning of the SARS-CoV-2 RBD in Omicron BA.1 and BA.2 variant backgrounds.
+# Deep mutational scanning of the porcine deltacoronavirus (PD-CoV) receptor binding domain
 
-Analysis of deep mutational scanning of barcoded codon variants of SARS-CoV-2 RBD in Omicron BA.1 and BA.2 variant backgrounds.
+Analysis of deep mutational scanning of barcoded codon variants of yeast-displayed PD-CoV RBD
 
-The 3 backgrounds examined here are:
-  1. Wuhan-Hu-1 background
-  2. Omicron BA.1
-  3. Omicron BA.2
+We measured binding of all single amino acid mutations in the PD-CoV RBD for binding to:
+  1. galline APN (gAPN)
+  2. porcine APN (hAPN)
+  3. human APN (hAPN)
 
-Study and analysis by Tyler Starr, Allie Greaney, [Jesse Bloom](https://research.fhcrc.org/bloom/en.html), and co-authors.
+Study and analysis by Tyler Starr and Ashley Taylor, in collaboration with the Veesler lab.
 
-Interactive visualizations of the key deep mutational scanning data are available [here](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS_Omicron/).
+Interactive visualizations of the key deep mutational scanning data are available [here](https://jbloomlab.github.io/PD-CoV-RBD_DMS/).
 
 ## Summary of workflow and results
 For a summary of the workflow and links to key results files, [click here](results/summary/summary.md).
