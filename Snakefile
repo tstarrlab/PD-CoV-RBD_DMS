@@ -119,27 +119,6 @@ rule interactive_heatmap_plot:
     notebook: "RBD-Heatmaps-Interactive-Visualization.ipynb"
 
 
-rule epistatic_shifts:
-    input:
-        config['final_variant_scores_mut_file'],
-    output:
-        config['JSD_v_WH1_file'],
-        config['JSD_v_WH1_expr_file'],
-        md='results/summary/epistatic_shifts.md',
-        md_files=directory('results/summary/epistatic_shifts_files')
-    envmodules:
-        'R/3.6.2-foss-2019b'
-    params:
-        nb='epistatic_shifts.Rmd',
-        md='epistatic_shifts.md',
-        md_files='epistatic_shifts_files'
-    shell:
-        """
-        R -e \"rmarkdown::render(input=\'{params.nb}\')\";
-        mv {params.md} {output.md};
-        mv {params.md_files} {output.md_files}
-        """
-
 
 rule collapse_scores:
     input:
