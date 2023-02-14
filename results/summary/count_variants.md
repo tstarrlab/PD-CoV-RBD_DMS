@@ -1328,12 +1328,12 @@ display(HTML(
   </thead>
   <tbody>
     <tr>
-      <td>lib56</td>
-      <td>33307</td>
-    </tr>
-    <tr>
       <td>lib55</td>
       <td>37192</td>
+    </tr>
+    <tr>
+      <td>lib56</td>
+      <td>33307</td>
     </tr>
   </tbody>
 </table>
