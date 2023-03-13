@@ -9,7 +9,7 @@ We measured binding of all single amino acid mutations in the PD-CoV RBD for bin
 
 Study and analysis by Tyler Starr and Ashley Taylor, in collaboration with the Veesler lab.
 
-Interactive visualizations of the key deep mutational scanning data are available [here](https://jbloomlab.github.io/PD-CoV-RBD_DMS/).
+Interactive visualizations of the key deep mutational scanning data are available [here](https://tstarrlab.github.io/PD-CoV-RBD_DMS/).
 
 ## Summary of workflow and results
 For a summary of the workflow and links to key results files, [click here](results/summary/summary.md).
