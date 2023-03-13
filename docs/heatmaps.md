@@ -23,4 +23,4 @@ Galline APN binding was determined from full titration curves and thus is analog
 
 ### Data
 
-Raw data  can be found [here](https://github.com/jbloomlab/PD-CoV-RBD_DMS_/blob/main/results/final_variant_scores/final_variant_scores.csv). The code used to make these plots can be found [here](https://github.com/jbloomlab/PD-CoV-RBD_DMS_/blob/main/RBD-Heatmaps-Interactive-Visualization.ipynb).
+Raw data  can be found [here](https://github.com/tstarrlab/PD-CoV-RBD_DMS/blob/main/results/final_variant_scores/final_variant_scores.csv). The code used to make these plots can be found [here](https://github.com/tstarrlab/PD-CoV-RBD_DMS/blob/main/RBD-Heatmaps-Interactive-Visualization.ipynb).
