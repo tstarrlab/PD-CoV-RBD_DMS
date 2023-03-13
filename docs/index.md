@@ -21,4 +21,4 @@ We have made two tools to help visualize the data from our deep mutational scans
 
 ### Data
 
-If you are interested in the raw data from our study, you can find the APN-binding phenotypes from each experiment [here](https://github.com/jbloomlab/PD-CoV-RBD_DMS/tree/main/results/final_variant_scores).
+If you are interested in the raw data from our study, you can find the APN-binding phenotypes from each experiment [here](https://github.com/tstarrlab/PD-CoV-RBD_DMS/tree/main/results/final_variant_scores).
