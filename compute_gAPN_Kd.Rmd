@@ -12,19 +12,20 @@ editor_options:
 This notebook reads in per-barcode counts from `count_variants.ipynb` for APN-binding Tite-seq experiments, computes functional scores for RBD APN-binding affiniity, and does some basic QC on variant binding functional scores.
 
 ```{r setup, message=FALSE, warning=FALSE, error=FALSE}
-require("knitr")
-knitr::opts_chunk$set(echo = T)
-knitr::opts_chunk$set(dev.args = list(png = list(type = "cairo")))
-
 #list of packages to install/load
 packages = c("yaml","data.table","tidyverse","gridExtra")
 #install any packages not already installed
 installed_packages <- packages %in% rownames(installed.packages())
 if(any(installed_packages == F)){
-  install.packages(packages[!installed_packages])
+  install.packages(packages[!installed_packages],
+                   lib=c(paste("/uufs/chpc.utah.edu/common/home/",Sys.getenv("USER"),"/RLibs/",Sys.getenv("R_VERSION"),sep="")),
+                   repos=c("http://cran.us.r-project.org"))
 }
 #load packages
 invisible(lapply(packages, library, character.only=T))
+
+knitr::opts_chunk$set(echo = T)
+knitr::opts_chunk$set(dev.args = list(png = list(type = "cairo")))
 
 #read in config file
 config <- read_yaml("config.yaml")

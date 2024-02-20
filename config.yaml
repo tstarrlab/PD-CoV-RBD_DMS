@@ -1,7 +1,5 @@
 # config for analysis
 
-# conda environment file
-environment: environment.yml
 
 # most CPUs to ever use at once
 max_cpus: 8
@@ -12,8 +10,8 @@ amplicons_PDCoV: data/PacBio_amplicon_PDCoV.gb
 # how to parse the amplicon
 feature_parse_specs_PDCoV: data/feature_parse_specs_PDCoV.yaml
 
-# do we get the sequencing data from the 'HutchServer' or 'SRA'?
-seqdata_source: HutchServer
+# do we get the sequencing data from the 'local' server or 'SRA'?
+seqdata_source: local
 
 # list of PacBio sequencing runs linking barcodes to variants
 pacbio_runs: data/PacBio_runs.csv

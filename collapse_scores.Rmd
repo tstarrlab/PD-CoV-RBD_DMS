@@ -12,19 +12,20 @@ editor_options:
 This notebook reads in the per-barcode Kd and MFI measurements from the `compute_xAPN` scripts. It synthesizes these two sets of results and calculates the final 'mean' phenotypes for each variant, and generates some coverage and QC analyses.
 
 ```{r setup, message=FALSE, warning=FALSE, error=FALSE}
-require("knitr")
-knitr::opts_chunk$set(echo = T)
-knitr::opts_chunk$set(dev.args = list(png = list(type = "cairo")))
-
 #list of packages to install/load
 packages = c("yaml","data.table","tidyverse","gridExtra")
 #install any packages not already installed
 installed_packages <- packages %in% rownames(installed.packages())
 if(any(installed_packages == F)){
-  install.packages(packages[!installed_packages])
+  install.packages(packages[!installed_packages],
+                   lib=c(paste("/uufs/chpc.utah.edu/common/home/",Sys.getenv("USER"),"/RLibs/",Sys.getenv("R_VERSION"),sep="")),
+                   repos=c("http://cran.us.r-project.org"))
 }
 #load packages
 invisible(lapply(packages, library, character.only=T))
+
+knitr::opts_chunk$set(echo = T)
+knitr::opts_chunk$set(dev.args = list(png = list(type = "cairo")))
 
 #read in config file
 config <- read_yaml("config.yaml")

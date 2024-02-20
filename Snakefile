@@ -20,7 +20,8 @@ configfile: 'config.yaml'
 
 # run "quick" rules locally:
 localrules: make_dag,
-            make_summary
+            make_summary,
+            save_pinned_env
 
 # Functions -------------------------------------------------------------------
 def nb_markdown(nb):
@@ -45,6 +46,7 @@ rule make_summary:
     """Create Markdown summary of analysis."""
     input:
         dag=os.path.join(config['summary_dir'], 'dag.svg'),
+        env='environment_pinned.yml',
         process_ccs_PDCoV=nb_markdown('process_ccs_PDCoV.ipynb'),
         barcode_variant_table_PDCoV=config['codon_variant_table_file_PDCoV'],
         variant_counts_file=config['variant_counts_file'],
@@ -92,7 +94,7 @@ rule make_summary:
             5. [Derive final genotype-level phenotypes from replicate barcoded sequences]({path(input.collapse_scores)}).
                Generates final phenotypes, recorded in [this file]({path(input.mut_phenos_file)}).
 
-            6. Make interactive data visualizations, available [here](https://jbloomlab.github.io/PD-CoV-RBD_DMS/)
+            6. Make interactive data visualizations, available [here](https://tstarrlab.github.io/PD-CoV-RBD_DMS/)
 
             """
             ).strip())
@@ -106,6 +108,17 @@ rule make_dag:
     shell:
         "snakemake --forceall --dag | dot -Tsvg > {output}"
 
+
+rule save_pinned_env:
+    input:
+        dag=os.path.join(config['summary_dir'], 'dag.svg'),
+    log:
+    	"environment_pinned.yml"
+    shell:
+        """
+        conda env export > {log}
+        """
+        
 
 rule interactive_heatmap_plot:
     """ Make the interactive heatmap for expression and binding.
@@ -130,7 +143,7 @@ rule collapse_scores:
         md='results/summary/collapse_scores.md',
         md_files=directory('results/summary/collapse_scores_files')
     envmodules:
-        'R/3.6.2-foss-2019b'
+        'R/4.1.3'
     params:
         nb='collapse_scores.Rmd',
         md='collapse_scores.md',
@@ -151,7 +164,7 @@ rule fit_pAPN_MFI:
         md='results/summary/compute_pAPN_meanF.md',
         md_files=directory('results/summary/compute_pAPN_meanF_files')
     envmodules:
-        'R/3.6.2-foss-2019b'
+        'R/4.1.3'
     params:
         nb='compute_pAPN_meanF.Rmd',
         md='compute_pAPN_meanF.md',
@@ -172,7 +185,7 @@ rule fit_hAPN_MFI:
         md='results/summary/compute_hAPN_meanF.md',
         md_files=directory('results/summary/compute_hAPN_meanF_files')
     envmodules:
-        'R/3.6.2-foss-2019b'
+        'R/4.1.3'
     params:
         nb='compute_hAPN_meanF.Rmd',
         md='compute_hAPN_meanF.md',
@@ -193,7 +206,7 @@ rule fit_gAPN_titrations:
         md='results/summary/compute_gAPN_Kd.md',
         md_files=directory('results/summary/compute_gAPN_Kd_files')
     envmodules:
-        'R/3.6.2-foss-2019b'
+        'R/4.1.3'
     params:
         nb='compute_gAPN_Kd.Rmd',
         md='compute_gAPN_Kd.md',
@@ -233,7 +246,7 @@ rule process_ccs_PDCoV:
         "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
 
 
-if config['seqdata_source'] == 'HutchServer':
+if config['seqdata_source'] == 'local':
 
     rule get_ccs:
         """Symbolically link CCS files."""
