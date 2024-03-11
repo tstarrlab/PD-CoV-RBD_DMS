@@ -51,6 +51,8 @@ import pandas as pd
 from plotnine import *
 
 import yaml
+
+%matplotlib inline
 ```
 
 Set [plotnine](https://plotnine.readthedocs.io/en/stable/) theme to the one defined in [dms_variants](https://jbloomlab.github.io/dms_variants):
@@ -69,7 +71,7 @@ print(f"Using dms_variants version {dms_variants.__version__}")
 ```
 
     Using alignparse version 0.6.0
-    Using dms_variants version 1.4.2
+    Using dms_variants version 1.4.3
 
 
 Ignore warnings that clutter output:
@@ -248,7 +250,7 @@ print(f"Using `minimap2` {mapper.version} with these options:\n" +
       ' '.join(mapper.options))
 ```
 
-    Using `minimap2` 2.18-r1015 with these options:
+    Using `minimap2` 2.26-r1175 with these options:
     -A2 -B4 -O12 -E2 --end-bonus=13 --secondary=no --cs
 
 

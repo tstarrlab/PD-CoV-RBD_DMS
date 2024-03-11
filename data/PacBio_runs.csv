@@ -1,3 +1,5 @@
 library,bg,run,ccs
 lib55,PDCoV,230126,/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2023/230126_PDCoV-PacBio/m64272e_230126_100200.hifi_reads.bc2028--bc2028.fastq
 lib56,PDCoV,230126,/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2023/230126_PDCoV-PacBio/m64272e_230126_100200.hifi_reads.bc2029--bc2029.fastq
+lib80,panDCoV,240206,/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2024/240206_pan-DCoV_PacBio/lib80-panpd-r1.r64296e185534C01.hifireads.fastq.gz
+lib81,panDCoV,240206,/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2024/240206_pan-DCoV_PacBio/lib81-panpd-r2.r64296e185534C01.hifireads.fastq.gz

@@ -1,0 +1,64 @@
+LOCUS       ThrushCoV_HKU12_         905 bp    DNA        linear       27-FEB-2024
+SOURCE      Tyler Starr
+  ORGANISM  .
+COMMENT     
+COMMENT     ApEinfo:methylated:1
+FEATURES             Location/Qualifiers
+     termini5        1..33
+                     /locus_tag="termini5"
+                     /label="termini5"
+                     /ApEinfo_label="termini5"
+                     /ApEinfo_fwdcolor="pink"
+                     /ApEinfo_revcolor="pink"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     spacer          463..883
+                     /locus_tag="spacer"
+                     /label="spacer"
+                     /ApEinfo_label="spacer"
+                     /ApEinfo_fwdcolor="pink"
+                     /ApEinfo_revcolor="pink"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     barcode         884..899
+                     /locus_tag="barcode"
+                     /label="barcode"
+                     /ApEinfo_label="barcode"
+                     /ApEinfo_fwdcolor="pink"
+                     /ApEinfo_revcolor="pink"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     termini3        900..905
+                     /locus_tag="termini3"
+                     /label="termini3"
+                     /ApEinfo_label="termini3"
+                     /ApEinfo_fwdcolor="pink"
+                     /ApEinfo_revcolor="pink"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     gene            34..462
+                     /locus_tag="gene"
+                     /label="gene"
+                     /ApEinfo_label="gene"
+                     /ApEinfo_fwdcolor="#ff797d"
+                     /ApEinfo_revcolor="#ff102f"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+ORIGIN
+        1 ggccgcggag gcggagggtc ggctagccat atgACGTACA CCGAGACTAT TTCGATTTTA
+       61 CCTAACATAT CTAATCCTGC CTACCCCGAT GGTTCCACTA ATGGTCCAGC TTTAGGCTGG
+      121 TGGGTAGGAA CAATGAACGT TCTATTTAAC AACAGTCAAA CTCTGTGCGT CAATAGCTCA
+      181 TTCTTCATGG TTAATATCAC GTTTAAATGT TGGCTAAAGC CTCATCCAAC AAAACCATCT
+      241 GATGAATACA AGTGTATAGG TGGCTTGCCA ACAGCTCAAG TTAAATTGCC CGACTGGCCA
+      301 TTTGCACCTT ATTATTCTTT TAGTCAATTA TGTCTTTCAT CAACATATCA GGTGGGTTAT
+      361 AGCACCTTCT ATTTTCAATA CTGGAATCAA GGGACTAATA AAAGATGGGA ATCCAAGCCG
+      421 TTGTTCTACT ATACTTATCA GACCGGAACA CAATATACTT ACctcgaggg gggcggttcc
+      481 gaacaaaagc ttatttctga agaggacttg taatagagat ctgataacaa cagtgtagat
+      541 gtaacaaaat cgactttgtt cccactgtac ttttagctcg tacaaaatac aatatacttt
+      601 tcatttctcc gtaaacaaca tgttttccca tgtaatatcc ttttctattt ttcgttccgt
+      661 taccaacttt acacatactt tatatagcta ttcacttcta tacactaaaa aactaagaca
+      721 attttaattt tgctgcctgc catatttcaa tttgttataa attcctataa tttatcctat
+      781 tagtagctaa aaaaagatga atgtgaatcg aatcctaaga gaattaatga tacggcgacc
+      841 accgagatct acactctttc cctacacgac gctcttccga tctNNNNNNN NNNNNNNNNg
+      901 cggcc     
+//

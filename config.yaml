@@ -6,9 +6,11 @@ max_cpus: 8
 
 # amplicons sequenced by PacBio
 amplicons_PDCoV: data/PacBio_amplicon_PDCoV.gb
+amplicons_panDCoV: data/PacBio_amplicon_panDCoV.gb
 
 # how to parse the amplicon
 feature_parse_specs_PDCoV: data/feature_parse_specs_PDCoV.yaml
+feature_parse_specs_panDCoV: data/feature_parse_specs_panDCoV.yaml
 
 # do we get the sequencing data from the 'local' server or 'SRA'?
 seqdata_source: local
@@ -39,9 +41,12 @@ figs_dir: results/figures
 ccs_dir: results/ccs
 process_ccs_dir: results/process_ccs
 processed_ccs_file_PDCoV: results/process_ccs/processed_ccs_PDCoV.csv
+processed_ccs_file_panDCoV: results/process_ccs/processed_ccs_panDCoV.csv
 variants_dir: results/variants
 nt_variant_table_file_PDCoV: results/variants/nucleotide_variant_table_PDCoV.csv
+nt_variant_table_file_panDCoV: results/variants/nucleotide_variant_table_panDCoV.csv
 codon_variant_table_file_PDCoV: results/variants/codon_variant_table_PDCoV.csv
+codon_variant_table_file_panDCoV: results/variants/codon_variant_table_panDCoV.csv
 counts_dir: results/counts
 variant_counts_file: results/counts/variant_counts.csv
 expression_sortseq_dir: results/expression_meanF

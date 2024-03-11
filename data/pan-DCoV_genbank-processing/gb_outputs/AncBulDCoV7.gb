@@ -1,0 +1,62 @@
+LOCUS       AncBulDCoV7              818 bp    DNA        linear       27-FEB-2024
+SOURCE      Tyler Starr
+  ORGANISM  .
+COMMENT     
+COMMENT     ApEinfo:methylated:1
+FEATURES             Location/Qualifiers
+     termini5        1..33
+                     /locus_tag="termini5"
+                     /label="termini5"
+                     /ApEinfo_label="termini5"
+                     /ApEinfo_fwdcolor="pink"
+                     /ApEinfo_revcolor="pink"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     spacer          376..796
+                     /locus_tag="spacer"
+                     /label="spacer"
+                     /ApEinfo_label="spacer"
+                     /ApEinfo_fwdcolor="pink"
+                     /ApEinfo_revcolor="pink"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     barcode         797..812
+                     /locus_tag="barcode"
+                     /label="barcode"
+                     /ApEinfo_label="barcode"
+                     /ApEinfo_fwdcolor="pink"
+                     /ApEinfo_revcolor="pink"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     termini3        813..818
+                     /locus_tag="termini3"
+                     /label="termini3"
+                     /ApEinfo_label="termini3"
+                     /ApEinfo_fwdcolor="pink"
+                     /ApEinfo_revcolor="pink"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     gene            34..375
+                     /locus_tag="gene"
+                     /label="gene"
+                     /ApEinfo_label="gene"
+                     /ApEinfo_fwdcolor="#ff797d"
+                     /ApEinfo_revcolor="#ff102f"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+ORIGIN
+        1 ggccgcggag gcggagggtc ggctagccat atgGCAGAAC TAGAAGTGGT TCAAATTAAC
+       61 ATCTCTGCTC ACTACAATTT TGGCGAGGCT AGAGTTACAT CTATAACAAT TAATGGTAAC
+      121 GACACCTACT GCGTAACAAA GCCATACTTT CATATTGAGA CTAATTTCGT CTGCAGCGGA
+      181 TGTACGCTGA ATTTGAGGAC CGATACTTGT TCATTCGATC TTAACGCAAT TAACAATGGA
+      241 ATGTCGTTTA GTCAGTTTTG TATATCTACC AAATCAGGGT CCTGTTCCAT GAAAATAGTT
+      301 GCCACGTATG TCTGGAATTA TCAAATCGCT CAAAAGTTAT ATGTGACAGC GGTAGAAGGT
+      361 CAGACTCATA CTGGTctcga ggggggcggt tccgaacaaa agcttatttc tgaagaggac
+      421 ttgtaataga gatctgataa caacagtgta gatgtaacaa aatcgacttt gttcccactg
+      481 tacttttagc tcgtacaaaa tacaatatac ttttcatttc tccgtaaaca acatgttttc
+      541 ccatgtaata tccttttcta tttttcgttc cgttaccaac tttacacata ctttatatag
+      601 ctattcactt ctatacacta aaaaactaag acaattttaa ttttgctgcc tgccatattt
+      661 caatttgtta taaattccta taatttatcc tattagtagc taaaaaaaga tgaatgtgaa
+      721 tcgaatccta agagaattaa tgatacggcg accaccgaga tctacactct ttccctacac
+      781 gacgctcttc cgatctNNNN NNNNNNNNNN NNgcggcc  
+//

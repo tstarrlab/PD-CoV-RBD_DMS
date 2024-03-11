@@ -9,19 +9,20 @@ APN-binding affiniity, and does some basic QC on variant binding
 functional scores.
 
 ``` r
-require("knitr")
-knitr::opts_chunk$set(echo = T)
-knitr::opts_chunk$set(dev.args = list(png = list(type = "cairo")))
-
 #list of packages to install/load
 packages = c("yaml","data.table","tidyverse","gridExtra")
 #install any packages not already installed
 installed_packages <- packages %in% rownames(installed.packages())
 if(any(installed_packages == F)){
-  install.packages(packages[!installed_packages])
+  install.packages(packages[!installed_packages],
+                   lib=c(paste("/uufs/chpc.utah.edu/common/home/",Sys.getenv("USER"),"/RLibs/",Sys.getenv("R_VERSION"),sep="")),
+                   repos=c("http://cran.us.r-project.org"))
 }
 #load packages
 invisible(lapply(packages, library, character.only=T))
+
+knitr::opts_chunk$set(echo = T)
+knitr::opts_chunk$set(dev.args = list(png = list(type = "cairo")))
 
 #read in config file
 config <- read_yaml("config.yaml")
@@ -38,12 +39,12 @@ Session info for reproducing environment:
 sessionInfo()
 ```
 
-    ## R version 3.6.2 (2019-12-12)
+    ## R version 4.1.3 (2022-03-10)
     ## Platform: x86_64-pc-linux-gnu (64-bit)
-    ## Running under: Ubuntu 18.04.6 LTS
+    ## Running under: Rocky Linux 8.8 (Green Obsidian)
     ## 
     ## Matrix products: default
-    ## BLAS/LAPACK: /app/software/OpenBLAS/0.3.7-GCC-8.3.0/lib/libopenblas_haswellp-r0.3.7.so
+    ## BLAS/LAPACK: /uufs/chpc.utah.edu/sys/spack/linux-rocky8-nehalem/gcc-8.5.0/intel-oneapi-mkl-2021.4.0-h43nkmwzvaltaa6ii5l7n6e7ruvjbmnv/mkl/2021.4.0/lib/intel64/libmkl_rt.so.1
     ## 
     ## locale:
     ##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
@@ -57,24 +58,24 @@ sessionInfo()
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ##  [1] gridExtra_2.3     forcats_0.4.0     stringr_1.4.0     dplyr_0.8.3      
-    ##  [5] purrr_0.3.3       readr_1.3.1       tidyr_1.0.0       tibble_3.0.2     
-    ##  [9] ggplot2_3.3.0     tidyverse_1.3.0   data.table_1.12.8 yaml_2.2.0       
-    ## [13] knitr_1.26       
+    ##  [1] gridExtra_2.3     forcats_0.5.1     stringr_1.4.0     dplyr_1.0.8      
+    ##  [5] purrr_0.3.4       readr_2.1.2       tidyr_1.2.0       tibble_3.1.6     
+    ##  [9] ggplot2_3.4.1     tidyverse_1.3.1   data.table_1.14.2 yaml_2.3.5       
     ## 
     ## loaded via a namespace (and not attached):
-    ##  [1] Rcpp_1.0.3       cellranger_1.1.0 pillar_1.4.5     compiler_3.6.2  
-    ##  [5] dbplyr_1.4.2     tools_3.6.2      digest_0.6.23    lubridate_1.7.4 
-    ##  [9] jsonlite_1.6     evaluate_0.14    lifecycle_0.2.0  gtable_0.3.0    
-    ## [13] pkgconfig_2.0.3  rlang_0.4.7      reprex_0.3.0     cli_2.0.0       
-    ## [17] rstudioapi_0.10  DBI_1.1.0        haven_2.2.0      xfun_0.11       
-    ## [21] withr_2.1.2      xml2_1.3.3       httr_1.4.1       fs_1.3.1        
-    ## [25] hms_0.5.2        generics_0.0.2   vctrs_0.3.1      grid_3.6.2      
-    ## [29] tidyselect_1.1.0 glue_1.3.1       R6_2.4.1         fansi_0.4.0     
-    ## [33] readxl_1.3.1     rmarkdown_2.0    modelr_0.1.5     magrittr_1.5    
-    ## [37] backports_1.1.5  scales_1.1.0     ellipsis_0.3.0   htmltools_0.4.0 
-    ## [41] rvest_0.3.5      assertthat_0.2.1 colorspace_1.4-1 stringi_1.4.3   
-    ## [45] munsell_0.5.0    broom_0.7.0      crayon_1.3.4
+    ##  [1] tidyselect_1.1.2 xfun_0.30        haven_2.4.3      colorspace_2.0-3
+    ##  [5] vctrs_0.5.2      generics_0.1.2   htmltools_0.5.2  utf8_1.2.2      
+    ##  [9] rlang_1.0.6      pillar_1.7.0     glue_1.6.2       withr_2.5.0     
+    ## [13] DBI_1.1.2        dbplyr_2.1.1     modelr_0.1.8     readxl_1.3.1    
+    ## [17] lifecycle_1.0.3  munsell_0.5.0    gtable_0.3.0     cellranger_1.1.0
+    ## [21] rvest_1.0.2      evaluate_0.15    knitr_1.37       tzdb_0.2.0      
+    ## [25] fastmap_1.1.0    fansi_1.0.2      broom_0.7.12     Rcpp_1.0.11     
+    ## [29] backports_1.4.1  scales_1.2.1     jsonlite_1.8.7   fs_1.5.2        
+    ## [33] hms_1.1.1        digest_0.6.29    stringi_1.7.6    grid_4.1.3      
+    ## [37] cli_3.6.0        tools_4.1.3      magrittr_2.0.2   crayon_1.5.0    
+    ## [41] pkgconfig_2.0.3  ellipsis_0.3.2   xml2_1.3.3       reprex_2.0.1    
+    ## [45] lubridate_1.8.0  rstudioapi_0.13  assertthat_0.2.1 rmarkdown_2.13  
+    ## [49] httr_1.4.7       R6_2.5.1         compiler_4.1.3
 
 ## Setup
 
@@ -336,8 +337,8 @@ our library barcodes. We will also spot check titration curves from
 across our measurement range, and spot check curves whose fit parameters
 hit the different boundary conditions of the fit variables.
 
-We successfully generated *K*<sub>D</sub> estimates for 33356 of our
-lib55A barcodes (89.69%), and 30841 of our lib56A barcodes (92.6%).
+We successfully generated *K*<sub>D</sub> estimates for 33364 of our
+lib55A barcodes (89.71%), and 30842 of our lib56A barcodes (92.6%).
 
 Why were estimates not returned for some barcodes? The histograms below
 show that many barcodes with unsuccessful titration fits have lower
@@ -582,7 +583,7 @@ grid.arrange(p1,ncol=1)
 invisible(dev.print(pdf, paste(config$binding_scores_dir,"/violin-plot_log10Ka_gAPN-by-target.pdf",sep="")))
 ```
 
-We have generated binding measurements for 89.51% of the barcodes in our
+We have generated binding measurements for 89.52% of the barcodes in our
 libraries.
 
 ## Data Output

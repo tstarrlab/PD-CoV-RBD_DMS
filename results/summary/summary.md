@@ -24,4 +24,4 @@ workflow:
 5. [Derive final genotype-level phenotypes from replicate barcoded sequences](collapse_scores.md).
    Generates final phenotypes, recorded in [this file](../final_variant_scores/final_variant_scores.csv).
 
-6. Make interactive data visualizations, available [here](https://jbloomlab.github.io/PD-CoV-RBD_DMS/)
+6. Make interactive data visualizations, available [here](https://tstarrlab.github.io/PD-CoV-RBD_DMS/)

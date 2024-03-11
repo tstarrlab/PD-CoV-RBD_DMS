@@ -1,0 +1,102 @@
+MagpieRobinCoV_HKU18_chu3: &DCoV_parse_specs
+  query_clip5: 4
+  query_clip3: 4
+  termini5:
+    filter:
+      clip5: 4
+      mutation_nt_count: 1
+      mutation_op_count: null
+  gene:
+    filter:
+      mutation_nt_count: 90
+      mutation_op_count: null
+    return: [mutations, accuracy]
+  spacer:
+    filter:
+      mutation_nt_count: 1
+      mutation_op_count: null
+  barcode:
+    filter:
+      mutation_nt_count: 0
+      mutation_op_count: null
+    return: [sequence, accuracy]
+  termini3:
+    filter:
+      clip3: 4
+      mutation_nt_count: 1
+      mutation_op_count: null
+
+PDCoV_JS2018_F101: *DCoV_parse_specs
+PDCoV_110_1197_TW_2021: *DCoV_parse_specs
+PDCoV_VUT_1_2016_Vietnam: *DCoV_parse_specs
+ThrushCoV_HKU12_600: *DCoV_parse_specs
+AncHerdeco3: *DCoV_parse_specs
+AncBulDCoV5_alt: *DCoV_parse_specs
+AncHerdeco3_alt: *DCoV_parse_specs
+GullCoV_HNU4_1: *DCoV_parse_specs
+PDCoV_AH2018_432: *DCoV_parse_specs
+PDCoV_HN2019_C115: *DCoV_parse_specs
+PDCoV_HeN_2015: *DCoV_parse_specs
+AncAndecoHerdeco: *DCoV_parse_specs
+AncHerdeco4: *DCoV_parse_specs
+AncAndecoHerdeco_alt: *DCoV_parse_specs
+AncHerdeco4_alt: *DCoV_parse_specs
+GullCoV_HNU4_3: *DCoV_parse_specs
+PDCoV_P29_15_VN_1215: *DCoV_parse_specs
+PDCoV_HKU15_SD2018_300: *DCoV_parse_specs
+PDCoV_SD2018_311: *DCoV_parse_specs
+AncBulDCoV6: *DCoV_parse_specs
+AncHerdeco5: *DCoV_parse_specs
+AncBulDCoV6_alt: *DCoV_parse_specs
+AncHerdeco5_alt: *DCoV_parse_specs
+HoubaraCoV_UAE_HKU28_285F: *DCoV_parse_specs
+PDCoV_CHJXNI2_2015: *DCoV_parse_specs
+PDCoV_SD2018_10: *DCoV_parse_specs
+SparrowCoV_ISU42824: *DCoV_parse_specs
+AncBulDCoV7: *DCoV_parse_specs
+AncDCoV_alt: *DCoV_parse_specs
+AncBulDCoV7_alt: *DCoV_parse_specs
+AvianCoV_MW01_1o: *DCoV_parse_specs
+PDCoV_KNU16_11: *DCoV_parse_specs
+PDCoV_AH2018_515: *DCoV_parse_specs
+MuniaCoV_HKU13_3514: *DCoV_parse_specs
+AncBulDCoV8: *DCoV_parse_specs
+AncBulDCoV1_alt: *DCoV_parse_specs
+AncBulDCoV8_alt: *DCoV_parse_specs
+AvianCoV_rub035cor1: *DCoV_parse_specs
+PDCoV_Minnesota455_2014: *DCoV_parse_specs
+PDCoV_CHN_GD16_05: *DCoV_parse_specs
+SparrowCoV_ISU690_4: *DCoV_parse_specs
+AncBulDCoV9: *DCoV_parse_specs
+AncBulDCoV2_alt: *DCoV_parse_specs
+AncBulDCoV9_alt: *DCoV_parse_specs
+AvianCoV_lrf178cor1: *DCoV_parse_specs
+PDCoV_Tianjin_2016: *DCoV_parse_specs
+PDCoV_JS2019_A1414: *DCoV_parse_specs
+QuailCoV_UAE_HKU30_411F: *DCoV_parse_specs
+AncHerdeco1: *DCoV_parse_specs
+AncBulDCoV3_alt: *DCoV_parse_specs
+AncHerdeco1_alt: *DCoV_parse_specs
+PDCoV_Illinois121_2014: *DCoV_parse_specs
+PDCoV_CH_JXJGS01_2016: *DCoV_parse_specs
+PDCoV_Thailand_S5011_2015: *DCoV_parse_specs
+QuailCoV_UAE_HKU30_1101F: *DCoV_parse_specs
+AncHerdeco2: *DCoV_parse_specs
+AncBulDCoV4_alt: *DCoV_parse_specs
+AncHerdeco2_alt: *DCoV_parse_specs
+HKU20-9243_WigeonCoV: *DCoV_parse_specs
+brb027cor1_AvianCoV: *DCoV_parse_specs
+HKU27-988F_FalconCoV: *DCoV_parse_specs
+HKU17-6124_SparrowCoV: *DCoV_parse_specs
+HKU19-6918_HeronCoV: *DCoV_parse_specs
+AncDCoV: *DCoV_parse_specs
+AncBulDCoV1: *DCoV_parse_specs
+AncBulDCoV2: *DCoV_parse_specs
+AncBulDCoV3: *DCoV_parse_specs
+AncBulDCoV4: *DCoV_parse_specs
+AncBulDCoV5: *DCoV_parse_specs
+AncPDCoV: *DCoV_parse_specs
+HKU21-9295_MoorhenCoV: *DCoV_parse_specs
+HKU16-6847_WhiteEyeCoV: *DCoV_parse_specs
+HKU11-934_BulbulCoV: *DCoV_parse_specs
+ISU73347_SparrowCoV: *DCoV_parse_specs

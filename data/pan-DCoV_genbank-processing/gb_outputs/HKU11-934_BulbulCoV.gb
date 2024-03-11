@@ -1,0 +1,62 @@
+LOCUS       HKU11_934_Bulbul         815 bp    DNA        linear       27-FEB-2024
+SOURCE      Tyler Starr
+  ORGANISM  .
+COMMENT     
+COMMENT     ApEinfo:methylated:1
+FEATURES             Location/Qualifiers
+     termini5        1..33
+                     /locus_tag="termini5"
+                     /label="termini5"
+                     /ApEinfo_label="termini5"
+                     /ApEinfo_fwdcolor="pink"
+                     /ApEinfo_revcolor="pink"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     spacer          373..793
+                     /locus_tag="spacer"
+                     /label="spacer"
+                     /ApEinfo_label="spacer"
+                     /ApEinfo_fwdcolor="pink"
+                     /ApEinfo_revcolor="pink"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     barcode         794..809
+                     /locus_tag="barcode"
+                     /label="barcode"
+                     /ApEinfo_label="barcode"
+                     /ApEinfo_fwdcolor="pink"
+                     /ApEinfo_revcolor="pink"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     termini3        810..815
+                     /locus_tag="termini3"
+                     /label="termini3"
+                     /ApEinfo_label="termini3"
+                     /ApEinfo_fwdcolor="pink"
+                     /ApEinfo_revcolor="pink"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     gene            34..372
+                     /locus_tag="gene"
+                     /label="gene"
+                     /ApEinfo_label="gene"
+                     /ApEinfo_fwdcolor="#ff797d"
+                     /ApEinfo_revcolor="#ff102f"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+ORIGIN
+        1 ggccgcggag gcggagggtc ggctagccat atgGCTGAAT TGGAAATGGT AAATCTAACT
+       61 ATCAATGCCA GATATTCAGC AGGTGAGGCT AGTGCCACGA TCAACATAAA CGGTAACGAT
+      121 ACATTCTGCG TCACAAAGCC TTACTTTCAT ATTAACGCTA AATATACATG TTCAGACTGT
+      181 GTGCTAAACC TAAGAACAGA TACTTGCTCA TTTGATATTA ACGCAATCAA TAATGGAATG
+      241 TCATTTTCTC AGTTTTGTCT GTCCACGAAA TCTGGAAGCT GTTCTATTAC ACTGGTTGCT
+      301 ACAAAGTATT GGAACTATCA AATTGCTCAG AAGCTGTACG TCACAGCGAT AGAAGGGCAA
+      361 ACTTCCACAG GTctcgaggg gggcggttcc gaacaaaagc ttatttctga agaggacttg
+      421 taatagagat ctgataacaa cagtgtagat gtaacaaaat cgactttgtt cccactgtac
+      481 ttttagctcg tacaaaatac aatatacttt tcatttctcc gtaaacaaca tgttttccca
+      541 tgtaatatcc ttttctattt ttcgttccgt taccaacttt acacatactt tatatagcta
+      601 ttcacttcta tacactaaaa aactaagaca attttaattt tgctgcctgc catatttcaa
+      661 tttgttataa attcctataa tttatcctat tagtagctaa aaaaagatga atgtgaatcg
+      721 aatcctaaga gaattaatga tacggcgacc accgagatct acactctttc cctacacgac
+      781 gctcttccga tctNNNNNNN NNNNNNNNNg cggcc  
+//

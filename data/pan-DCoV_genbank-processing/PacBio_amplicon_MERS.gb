@@ -1,0 +1,31 @@
+LOCUS       MERS                       1121 bp    DNA        linear       12-DEC-2022
+SOURCE      Tyler Starr
+  ORGANISM  .
+FEATURES             Location/Qualifiers
+     termini5        1..33
+     spacer          679..1099
+     barcode         1100..1115
+     termini3        1116..1121
+     gene            34..678
+
+ORIGIN
+        1 ggccgcggag gcggagggtc ggctagccat atgCAAGCGG AAGGGGTCGA GTGCGATTTT
+       61 AGTCCACTGT TATCCGGCAC ACCGCCTCAA GTCTATAATT TTAAGAGACT GGTTTTCACA
+      121 AACTGCAATT ATAATCTAAC GAAATTGTTA AGCTTATTTA GCGTCAATGA TTTCACCTGC
+      181 TCTCAAATCT CTCCCGCCGC CATAGCAAGC AACTGTTACA GCAGTTTGAT TCTTGATTAC
+      241 TTCTCTTACC CATTATCTAT GAAATCTGAC CTGTCTGTAA GCTCAGCAGG GCCGATCTCC
+      301 CAATTTAACT ATAAGCAATC CTTTTCAAAT CCAACCTGCC TTATTCTGGC CACCGTGCCT
+      361 CACAATCTAA CCACGATAAC GAAGCCCTTA AAATATAGCT ACATCAATAA ATGCTCCCGT
+      421 CTTCTTTCTG ACGACAGGAC CGAGGTGCCT CAGTTAGTTA ATGCCAACCA GTATTCCCCA
+      481 TGCGTATCCA TCGTTCCGAG TACGGTATGG GAGGATGGTG ATTACTATAG AAAGCAGTTA
+      541 AGCCCGTTGG AAGGCGGCGG GTGGTTGGTT GCCAGCGGTT CAACAGTTGC TATGACAGAG
+      601 CAGCTTCAAA TGGGCTTCGG AATTACAGTC CAGTATGGCA CTGATACCAA TTCTGTTTGC
+      661 CCAAAACTTG AGTTCGCTct cgaggggggc ggttccgaac aaaagcttat ttctgaagag
+      721 gacttgtaat agagatctga taacaacagt gtagatgtaa caaaatcgac tttgttccca
+      781 ctgtactttt agctcgtaca aaatacaata tacttttcat ttctccgtaa acaacatgtt
+      841 ttcccatgta atatcctttt ctatttttcg ttccgttacc aactttacac atactttata
+      901 tagctattca cttctataca ctaaaaaact aagacaattt taattttgct gcctgccata
+      961 tttcaatttg ttataaattc ctataattta tcctattagt agctaaaaaa agatgaatgt
+     1021 gaatcgaatc ctaagagaat taatgatacg gcgaccaccg agatctacac tctttcccta
+     1081 cacgacgctc ttccgatctN NNNNNNNNNN NNNNNgcggc c 
+//

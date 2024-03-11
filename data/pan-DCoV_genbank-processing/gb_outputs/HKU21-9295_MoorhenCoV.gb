@@ -1,0 +1,64 @@
+LOCUS       HKU21_9295_Moorh         866 bp    DNA        linear       27-FEB-2024
+SOURCE      Tyler Starr
+  ORGANISM  .
+COMMENT     
+COMMENT     
+COMMENT     ApEinfo:methylated:1
+FEATURES             Location/Qualifiers
+     termini5        1..33
+                     /locus_tag="termini5"
+                     /label="termini5"
+                     /ApEinfo_label="termini5"
+                     /ApEinfo_fwdcolor="pink"
+                     /ApEinfo_revcolor="pink"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     spacer          424..844
+                     /locus_tag="spacer"
+                     /label="spacer"
+                     /ApEinfo_label="spacer"
+                     /ApEinfo_fwdcolor="pink"
+                     /ApEinfo_revcolor="pink"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     barcode         845..860
+                     /locus_tag="barcode"
+                     /label="barcode"
+                     /ApEinfo_label="barcode"
+                     /ApEinfo_fwdcolor="pink"
+                     /ApEinfo_revcolor="pink"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     termini3        861..866
+                     /locus_tag="termini3"
+                     /label="termini3"
+                     /ApEinfo_label="termini3"
+                     /ApEinfo_fwdcolor="pink"
+                     /ApEinfo_revcolor="pink"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     gene            34..423
+                     /locus_tag="gene"
+                     /label="gene"
+                     /ApEinfo_label="gene"
+                     /ApEinfo_fwdcolor="#ff797d"
+                     /ApEinfo_revcolor="#ff102f"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+ORIGIN
+        1 ggccgcggag gcggagggtc ggctagccat atgGTTACAT ATTCTAGAGT TAAGCTAACA
+       61 GCTTTTGCTG AGGGAAATAT CTTCGATGGG GTTTCATTAT CCTCTCTTAT TTTATCCGAA
+      121 AACAAAACTA ATTCCAATAC CACATTTAAC GATACTATTT GCGTCGATAC GACATATTTT
+      181 AACTTCTATT TGAAGTTTGC CTGCGGCGGA GGATCTTTTA GATGTTCATT AAGCTGCAGA
+      241 TCTGCTGGAT GTCCATTCGA TCTACAGGGC TTGAATAATT ACTTATCATT CGATCATATT
+      301 TGCTTCTCCT TGTTGAACAA CGGTGGTTGT CCGATCCAGC TACTGGCTTA TTGGGGTTCC
+      361 TCCTTCTCTA GAGTTCTAGC GACAATTTAC GTTTCTTATT CCCCAGGCAC AAGGATAACT
+      421 GGCctcgagg ggggcggttc cgaacaaaag cttatttctg aagaggactt gtaatagaga
+      481 tctgataaca acagtgtaga tgtaacaaaa tcgactttgt tcccactgta cttttagctc
+      541 gtacaaaata caatatactt ttcatttctc cgtaaacaac atgttttccc atgtaatatc
+      601 cttttctatt tttcgttccg ttaccaactt tacacatact ttatatagct attcacttct
+      661 atacactaaa aaactaagac aattttaatt ttgctgcctg ccatatttca atttgttata
+      721 aattcctata atttatccta ttagtagcta aaaaaagatg aatgtgaatc gaatcctaag
+      781 agaattaatg atacggcgac caccgagatc tacactcttt ccctacacga cgctcttccg
+      841 atctNNNNNN NNNNNNNNNN gcggcc   
+//
