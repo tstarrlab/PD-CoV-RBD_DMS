@@ -11,7 +11,7 @@ Here is the DAG of the computational workflow:
 Here is the Markdown output of each Jupyter notebook in the
 workflow:
 
-1. Process PacBio CCSs for [PDCoV libraries](process_ccs_PDCoV.md). Creates barcode-variant lookup table, which can be found [here](../variants/codon_variant_table_PDCoV.csv),.
+1. Process PacBio CCSs for [PDCoV libraries](process_ccs_PDCoV.md) and [pan-delta-CoV](process_ccs_panDCoV.md) libraries. Creates barcode-variant lookup tables, which can be found here for [PD-CoV](../variants/codon_variant_table_PDCoV.csv) and [pan-delta-CoV](../variants/codon_variant_table_PDCoV.csv) libraries.
 
 2. [Count variants by barcode](count_variants.md).
    Creates a [variant counts file](../counts/variant_counts.csv)

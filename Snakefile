@@ -49,6 +49,8 @@ rule make_summary:
         env='environment_pinned.yml',
         process_ccs_PDCoV=nb_markdown('process_ccs_PDCoV.ipynb'),
         barcode_variant_table_PDCoV=config['codon_variant_table_file_PDCoV'],
+        barcode_variant_table_panDCoV=config['nt_variant_table_file_panDCoV'],
+        process_ccs_panDCoV=nb_markdown('process_ccs_panDCoV.ipynb'),
         variant_counts_file=config['variant_counts_file'],
         count_variants=nb_markdown('count_variants.ipynb'),
         fit_gAPN_titrations='results/summary/compute_gAPN_Kd.md',
@@ -81,7 +83,7 @@ rule make_summary:
             Here is the Markdown output of each Jupyter notebook in the
             workflow:
             
-            1. Process PacBio CCSs for [PDCoV libraries]({path(input.process_ccs_PDCoV)}). Creates barcode-variant lookup table, which can be found [here]({path(input.barcode_variant_table_PDCoV)}),.
+            1. Process PacBio CCSs for [PDCoV libraries]({path(input.process_ccs_PDCoV)}) and [pan-delta-CoV]({path(input.process_ccs_panDCoV)}) libraries. Creates barcode-variant lookup tables, which can be found here for [PD-CoV]({path(input.barcode_variant_table_PDCoV)}) and [pan-delta-CoV]({path(input.barcode_variant_table_PDCoV)}) libraries.
             
             2. [Count variants by barcode]({path(input.count_variants)}).
                Creates a [variant counts file]({path(input.variant_counts_file)})
@@ -230,6 +232,21 @@ rule count_variants:
         nb='count_variants.ipynb'
     shell:
         "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
+
+
+rule process_ccs_panDCoV:
+    """Process the PacBio CCSs for panDCoV background and build variant table."""
+    input:
+        expand(os.path.join(config['ccs_dir'], "{pacbioRun}_ccs.fastq.gz"),
+               pacbioRun=pacbio_runs['pacbioRun']),
+    output:
+        config['nt_variant_table_file_panDCoV'],
+        nb_markdown=nb_markdown('process_ccs_panDCoV.ipynb')
+    params:
+        nb='process_ccs_panDCoV.ipynb'
+    shell:
+        "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
+
         
 rule process_ccs_PDCoV:
     """Process the PacBio CCSs for PDCoV background and build variant table."""

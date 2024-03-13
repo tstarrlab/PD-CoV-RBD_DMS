@@ -46,7 +46,6 @@ variants_dir: results/variants
 nt_variant_table_file_PDCoV: results/variants/nucleotide_variant_table_PDCoV.csv
 nt_variant_table_file_panDCoV: results/variants/nucleotide_variant_table_panDCoV.csv
 codon_variant_table_file_PDCoV: results/variants/codon_variant_table_PDCoV.csv
-codon_variant_table_file_panDCoV: results/variants/codon_variant_table_panDCoV.csv
 counts_dir: results/counts
 variant_counts_file: results/counts/variant_counts.csv
 expression_sortseq_dir: results/expression_meanF
