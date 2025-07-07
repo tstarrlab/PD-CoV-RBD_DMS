@@ -10,16 +10,14 @@ Tyler Starr
 - <a href="#calculate-per-mutant-score-across-libraries"
   id="toc-calculate-per-mutant-score-across-libraries">Calculate
   per-mutant score across libraries</a>
-- <a
-  href="#correlations-among-backgrounds-and-to-prior-wuhan-hu-1-dms-data"
-  id="toc-correlations-among-backgrounds-and-to-prior-wuhan-hu-1-dms-data">Correlations
-  among backgrounds and to prior Wuhan-Hu-1 DMS data</a>
+- <a href="#correlations-among-phenotypes"
+  id="toc-correlations-among-phenotypes">Correlations among phenotypes</a>
 - <a href="#heatmaps" id="toc-heatmaps">Heatmaps!</a>
 
 This notebook reads in the per-barcode Kd and MFI measurements from the
-`compute_xAPN` scripts. It synthesizes these two sets of results and
-calculates the final ‘mean’ phenotypes for each variant, and generates
-some coverage and QC analyses.
+`compute_xAPN` and `expression` scripts. It synthesizes these two sets
+of results and calculates the final ‘mean’ phenotypes for each variant,
+and generates some coverage and QC analyses.
 
 ``` r
 #list of packages to install/load
@@ -102,6 +100,9 @@ dt_gAPN[library=="lib56A",library:="lib56"]
 setnames(dt_gAPN,"TiteSeq_avgcount","gAPN_count")
 dt_hAPN <- data.table(read.csv(config$hAPN_meanF_file),stringsAsFactors=F)
 dt_pAPN <- data.table(read.csv(config$pAPN_meanF_file),stringsAsFactors=F)
+dt_expr <- data.table(read.csv(config$expression_sortseq_file),stringsAsFactors = F)
+dt_expr[library=="lib55A",library:="lib55"]
+dt_expr[library=="lib56A",library:="lib56"]
 ```
 
 ## Calculate per-variant mean scores within replicates
@@ -135,6 +136,13 @@ dt_pAPN[,n_bc_bind_pAPN:=sum(!is.na(pAPN_meanF)),by=c("library","target","varian
 dt_pAPN[,avg_count_bind_pAPN:=mean(pAPN_count,na.rm=T),by=c("library","target","variant_class","aa_substitutions")]
 
 dt_pAPN <- unique(dt_pAPN[,.(library,target,variant_class,aa_substitutions,n_aa_substitutions,mean_bind_pAPN,sd_bind_pAPN,n_bc_bind_pAPN,avg_count_bind_pAPN)])
+
+dt_expr[,mean_expr:=mean(expression,na.rm=T),by=c("library","target","variant_class","aa_substitutions")]
+dt_expr[,sd_expr:=sd(expression,na.rm=T),by=c("library","target","variant_class","aa_substitutions")]
+dt_expr[,n_bc_expr:=sum(!is.na(expression)),by=c("library","target","variant_class","aa_substitutions")]
+dt_expr[,avg_count_expr:=mean(expr_count,na.rm=T),by=c("library","target","variant_class","aa_substitutions")]
+
+dt_expr <- unique(dt_expr[,.(library,target,variant_class,aa_substitutions,n_aa_substitutions,mean_expr,sd_expr,n_bc_expr,avg_count_expr)])
 ```
 
 Some QC plots. First, look at distribution of number barcodes for
@@ -144,7 +152,7 @@ of genotypes for which no barcodes were collapsed to final measurement
 in a pool.
 
 ``` r
-par(mfrow=c(3,2))
+par(mfrow=c(4,2))
 hist(dt_gAPN[library=="lib55" & variant_class=="1 nonsynonymous",n_bc_bind_gAPN],main="lib55, gAPN bind",right=F,breaks=max(dt_gAPN[library=="lib55" & variant_class=="1 nonsynonymous",n_bc_bind_gAPN],na.rm=T),xlab="")
 hist(dt_gAPN[library=="lib56" & variant_class=="1 nonsynonymous",n_bc_bind_gAPN],main="lib56, gAPN bind",right=F,breaks=max(dt_gAPN[library=="lib56" & variant_class=="1 nonsynonymous",n_bc_bind_gAPN],na.rm=T),xlab="")
 
@@ -153,6 +161,9 @@ hist(dt_hAPN[library=="lib56" & variant_class=="1 nonsynonymous",n_bc_bind_hAPN]
 
 hist(dt_pAPN[library=="lib55" & variant_class=="1 nonsynonymous",n_bc_bind_pAPN],main="lib55, pAPN bind",right=F,breaks=max(dt_pAPN[library=="lib55" & variant_class=="1 nonsynonymous",n_bc_bind_pAPN],na.rm=T),xlab="")
 hist(dt_pAPN[library=="lib56" & variant_class=="1 nonsynonymous",n_bc_bind_pAPN],main="lib56, pAPN bind",right=F,breaks=max(dt_pAPN[library=="lib56" & variant_class=="1 nonsynonymous",n_bc_bind_pAPN],na.rm=T),xlab="")
+
+hist(dt_expr[library=="lib55" & variant_class=="1 nonsynonymous",n_bc_expr],main="lib55, expr bind",right=F,breaks=max(dt_expr[library=="lib55" & variant_class=="1 nonsynonymous",n_bc_expr],na.rm=T),xlab="")
+hist(dt_expr[library=="lib56" & variant_class=="1 nonsynonymous",n_bc_expr],main="lib56, expr bind",right=F,breaks=max(dt_expr[library=="lib56" & variant_class=="1 nonsynonymous",n_bc_expr],na.rm=T),xlab="")
 ```
 
 <img src="collapse_scores_files/figure-gfm/hist_n_bc_per_mutant-1.png" style="display: block; margin: auto;" />
@@ -165,7 +176,7 @@ What about how SEM tracks with number of barcodes collapsed? This could
 help for choosing a minimum number of barcodes to use.
 
 ``` r
-par(mfrow=c(3,2))
+par(mfrow=c(4,2))
 plot(dt_gAPN[library=="lib55" & variant_class=="1 nonsynonymous",n_bc_bind_gAPN],
      dt_gAPN[library=="lib55" & variant_class=="1 nonsynonymous",sd_bind_gAPN/sqrt(n_bc_bind_gAPN)],
      pch=16,col="#00000005",main="lib55, gAPN bind",ylab="SEM",xlab="number barcodes collapsed")
@@ -186,6 +197,13 @@ plot(dt_pAPN[library=="lib55" & variant_class=="1 nonsynonymous",n_bc_bind_pAPN]
 plot(dt_pAPN[library=="lib56" & variant_class=="1 nonsynonymous",n_bc_bind_pAPN],
      dt_pAPN[library=="lib56" & variant_class=="1 nonsynonymous",sd_bind_pAPN/sqrt(n_bc_bind_pAPN)],
      pch=16,col="#00000005",main="lib56, pAPN bind",ylab="SEM",xlab="number barcodes collapsed")
+
+plot(dt_expr[library=="lib55" & variant_class=="1 nonsynonymous",n_bc_expr],
+     dt_expr[library=="lib55" & variant_class=="1 nonsynonymous",sd_expr/sqrt(n_bc_expr)],
+     pch=16,col="#00000005",main="lib55, expr ",ylab="SEM",xlab="number barcodes collapsed")
+plot(dt_expr[library=="lib56" & variant_class=="1 nonsynonymous",n_bc_expr],
+     dt_expr[library=="lib56" & variant_class=="1 nonsynonymous",sd_expr/sqrt(n_bc_expr)],
+     pch=16,col="#00000005",main="lib56, expr ",ylab="SEM",xlab="number barcodes collapsed")
 ```
 
 <img src="collapse_scores_files/figure-gfm/sem_v_n-bc-1.png" style="display: block; margin: auto;" />
@@ -199,7 +217,7 @@ mutants (and wildtype), breakup the string of mutations, and fill in the
 table to also include any missing mutants.
 
 ``` r
-dt <- merge(merge(dt_gAPN, dt_hAPN), dt_pAPN)
+dt <- merge(merge(merge(dt_gAPN, dt_hAPN), dt_pAPN), dt_expr)
 
 dt_mutant <- dt[variant_class %in% "1 nonsynonymous",]
 
@@ -214,7 +232,8 @@ dt_mutant[,c("wildtype","position","mutant"):=split_mut(as.character(aa_substitu
 dt_mutant <- dt_mutant[,.(library,target,wildtype,position,mutant,
                           mean_bind_gAPN,sd_bind_gAPN,n_bc_bind_gAPN,avg_count_bind_gAPN,
                           mean_bind_hAPN,sd_bind_hAPN,n_bc_bind_hAPN,avg_count_bind_hAPN,
-                          mean_bind_pAPN,sd_bind_pAPN,n_bc_bind_pAPN,avg_count_bind_pAPN)]
+                          mean_bind_pAPN,sd_bind_pAPN,n_bc_bind_pAPN,avg_count_bind_pAPN,
+                          mean_expr, sd_expr, n_bc_expr, avg_count_expr)]
 
 aas <- c("A","C","D","E","F","G","H","I","K","L","M","N","P","Q","R","S","T","V","W","Y")
 #fill out missing values in table with a hideous loop, so the table is complete for all mutaitons (including those that are missing). If you are somebody who is reading this code, I apologize.
@@ -236,11 +255,13 @@ for(bg in c("PDCoV")){
   for(lib in c("lib55","lib56")){
     dt_mutant[library==lib & target==bg & wildtype==mutant, c("mean_bind_gAPN","sd_bind_gAPN","n_bc_bind_gAPN","avg_count_bind_gAPN",
                                                               "mean_bind_hAPN","sd_bind_hAPN","n_bc_bind_hAPN","avg_count_bind_hAPN",
-                                                              "mean_bind_pAPN","sd_bind_pAPN","n_bc_bind_pAPN","avg_count_bind_pAPN") := 
+                                                              "mean_bind_pAPN","sd_bind_pAPN","n_bc_bind_pAPN","avg_count_bind_pAPN",
+                                                              "mean_expr", "sd_expr", "n_bc_expr", "avg_count_expr") := 
                 dt[library==lib & target==bg & variant_class=="wildtype",
                         .(mean_bind_gAPN,sd_bind_gAPN,n_bc_bind_gAPN,avg_count_bind_gAPN,
                           mean_bind_hAPN,sd_bind_hAPN,n_bc_bind_hAPN,avg_count_bind_hAPN,
-                          mean_bind_pAPN,sd_bind_pAPN,n_bc_bind_pAPN,avg_count_bind_pAPN)]]
+                          mean_bind_pAPN,sd_bind_pAPN,n_bc_bind_pAPN,avg_count_bind_pAPN,
+                          mean_expr, sd_expr, n_bc_expr, avg_count_expr)]]
   }
 }
 
@@ -253,6 +274,8 @@ for(bg in c("PDCoV")){
     dt_mutant[library==lib & target==bg,delta_bind_hAPN := mean_bind_hAPN - ref_bind_hAPN]
     ref_bind_pAPN <- dt[library==lib & target==bg & variant_class=="wildtype",mean_bind_pAPN]
     dt_mutant[library==lib & target==bg,delta_bind_pAPN := mean_bind_pAPN - ref_bind_pAPN]
+    ref_expr <- dt[library==lib & target==bg & variant_class=="wildtype",mean_expr]
+    dt_mutant[library==lib & target==bg,delta_expr := mean_expr - ref_expr]
   }
 }
 ```
@@ -260,12 +283,14 @@ for(bg in c("PDCoV")){
 We have duplicates for each measurement. Let’s look at correlations!
 
 ``` r
-par(mfrow=c(1,3))
+par(mfrow=c(2,2))
 x <- dt_mutant[library=="lib55" & wildtype!=mutant,mean_bind_gAPN]; y <- dt_mutant[library=="lib56" & wildtype!=mutant,mean_bind_gAPN]; plot(x,y,pch=16,col="#00000020",xlab="replicate 1",ylab="replicate 2",main="gAPN binding");model <- lm(y~x);abline(a=0,b=1,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
 
 x <- dt_mutant[library=="lib55" & wildtype!=mutant,mean_bind_hAPN]; y <- dt_mutant[library=="lib56" & wildtype!=mutant,mean_bind_hAPN]; plot(x,y,pch=16,col="#00000020",xlab="replicate 1",ylab="replicate 2",main="hAPN binding");model <- lm(y~x);abline(a=0,b=1,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
 
 x <- dt_mutant[library=="lib55" & wildtype!=mutant,mean_bind_pAPN]; y <- dt_mutant[library=="lib56" & wildtype!=mutant,mean_bind_pAPN]; plot(x,y,pch=16,col="#00000020",xlab="replicate 1",ylab="replicate 2",main="pAPN binding");model <- lm(y~x);abline(a=0,b=1,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
+
+x <- dt_mutant[library=="lib55" & wildtype!=mutant,mean_expr]; y <- dt_mutant[library=="lib56" & wildtype!=mutant,mean_expr]; plot(x,y,pch=16,col="#00000020",xlab="replicate 1",ylab="replicate 2",main="expression");model <- lm(y~x);abline(a=0,b=1,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
 ```
 
 <img src="collapse_scores_files/figure-gfm/plot_correlations-1.png" style="display: block; margin: auto;" />
@@ -301,6 +326,11 @@ dt_final[ ,delta_bind_pAPN:=mean(delta_bind_pAPN,na.rm=T),by=c("target","positio
 dt_final[ ,n_bc_pAPN:=sum(n_bc_bind_pAPN,na.rm=T),by=c("target","position","mutant")]
 dt_final[ ,n_libs_pAPN:=sum(!is.na(mean_bind_pAPN)),by=c("target","position","mutant")]
 
+dt_final[ ,expr:=mean(mean_expr,na.rm=T),by=c("target","position","mutant")]
+dt_final[ ,delta_expr:=mean(delta_expr,na.rm=T),by=c("target","position","mutant")]
+dt_final[ ,n_bc_expr:=sum(n_bc_expr,na.rm=T),by=c("target","position","mutant")]
+dt_final[ ,n_libs_expr:=sum(!is.na(mean_expr)),by=c("target","position","mutant")]
+
 #switch to spike indexing of postitions
 dt_final$position <- dt_final$position + config$site_number_offset
 
@@ -310,7 +340,8 @@ dt_final[,mutation:=paste(wildtype,position,mutant,sep=""),by=c("wildtype","posi
 dt_final <- unique(dt_final[,.(target,wildtype,position,mutant,mutation,
                                bind_gAPN,delta_bind_gAPN,n_bc_gAPN,n_libs_gAPN,
                                bind_hAPN,delta_bind_hAPN,n_bc_hAPN,n_libs_hAPN,
-                               bind_pAPN,delta_bind_pAPN,n_bc_pAPN,n_libs_pAPN)])
+                               bind_pAPN,delta_bind_pAPN,n_bc_pAPN,n_libs_pAPN,
+                               expr,delta_expr,n_bc_expr,n_libs_expr)])
 
 setkey(dt_final,target,position,mutant)
 
@@ -323,6 +354,9 @@ dt_final[,hAPN_rep2 := dt_mutant[library=="lib56", mean_bind_hAPN]]
 
 dt_final[,pAPN_rep1 := dt_mutant[library=="lib55", mean_bind_pAPN]]
 dt_final[,pAPN_rep2 := dt_mutant[library=="lib56", mean_bind_pAPN]]
+
+dt_final[,expr_rep1 := dt_mutant[library=="lib55", mean_expr]]
+dt_final[,expr_rep2 := dt_mutant[library=="lib56", mean_expr]]
 ```
 
 Censor any measurements that are from \<3 bc or only sampled in a single
@@ -340,12 +374,14 @@ Coverage stats on n_barcodes for different measurements in the final
 pooled measurements.
 
 ``` r
-par(mfrow=c(1,3))
+par(mfrow=c(2,2))
 hist(dt_final[wildtype!=mutant, n_bc_gAPN],col="gray50",main=paste("mutant gAPN bind score,\nmedian ",median(dt_final[wildtype!=mutant, n_bc_gAPN],na.rm=T),sep=""),right=F,breaks=max(c(dt_final[wildtype!=mutant, n_bc_gAPN],dt_final[wildtype!=mutant, n_bc_hAPN],dt_final[wildtype!=mutant, n_bc_pAPN]))/2,xlab="number barcodes", xlim=c(0,100))
 
 hist(dt_final[wildtype!=mutant, n_bc_hAPN],col="gray50",main=paste("mutant hAPN bind score,\nmedian ",median(dt_final[wildtype!=mutant, n_bc_hAPN],na.rm=T),sep=""),right=F,breaks=max(c(dt_final[wildtype!=mutant, n_bc_gAPN],dt_final[wildtype!=mutant, n_bc_hAPN],dt_final[wildtype!=mutant, n_bc_pAPN]))/2,xlab="number barcodes", xlim=c(0,100))
 
 hist(dt_final[wildtype!=mutant, n_bc_pAPN],col="gray50",main=paste("mutant pAPN bind score,\nmedian ",median(dt_final[wildtype!=mutant, n_bc_pAPN],na.rm=T),sep=""),right=F,breaks=max(c(dt_final[wildtype!=mutant, n_bc_gAPN],dt_final[wildtype!=mutant, n_bc_hAPN],dt_final[wildtype!=mutant, n_bc_pAPN]))/2,xlab="number barcodes", xlim=c(0,100))
+
+hist(dt_final[wildtype!=mutant, n_bc_expr],col="gray50",main=paste("mutant expr bind score,\nmedian ",median(dt_final[wildtype!=mutant, n_bc_expr],na.rm=T),sep=""),right=F,breaks=max(c(dt_final[wildtype!=mutant, n_bc_gAPN],dt_final[wildtype!=mutant, n_bc_hAPN],dt_final[wildtype!=mutant, n_bc_expr]))/2,xlab="number barcodes", xlim=c(0,100))
 ```
 
 <img src="collapse_scores_files/figure-gfm/n_barcode_plots-1.png" style="display: block; margin: auto;" />
@@ -354,21 +390,32 @@ hist(dt_final[wildtype!=mutant, n_bc_pAPN],col="gray50",main=paste("mutant pAPN 
 invisible(dev.print(pdf, paste(config$final_variant_scores_dir,"/histogram_n_bc_per_geno_pooled-libs.pdf",sep="")))
 ```
 
-## Correlations among backgrounds and to prior Wuhan-Hu-1 DMS data
+## Correlations among phenotypes
 
-Look at correlations in mutation effects between each background, for
-bind phenotype
+Look at correlations in mutation effects on each phenotypes. Should we
+expression-normalize maybe the single-point binding values?
 
 ``` r
-par(mfrow=c(2,2))
+par(mfrow=c(3,3))
 
-x <- dt_final[,bind_gAPN]; y <- dt_final[,bind_hAPN]; plot(x,y,pch=16,col="#00000020",xlab="galline APN (log10Ka)",ylab="human APN (MFI)",main="", xlim=c(4,10.5),ylim=c(4,10.5));model <- lm(y~x);abline(model,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
+y <- dt_final[,bind_gAPN]; x <- dt_final[,bind_hAPN]; plot(x,y,pch=16,col="#00000020",ylab="galline APN (log10Ka)",xlab="human APN (MFI)",main="", xlim=c(4,10.5),ylim=c(4,10.5));model <- lm(y~x);abline(model,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
 
-x <- dt_final[,bind_gAPN]; y <- dt_final[,bind_pAPN]; plot(x,y,pch=16,col="#00000020",xlab="galline APN (log10Ka)",ylab="porcine APN (MFI)",main="", xlim=c(4,10.5),ylim=c(4,10.5));model <- lm(y~x);abline(model,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
+y <- dt_final[,bind_gAPN]; x <- dt_final[,bind_pAPN]; plot(x,y,pch=16,col="#00000020",ylab="galline APN (log10Ka)",xlab="porcine APN (MFI)",main="", xlim=c(4,10.5),ylim=c(4,10.5));model <- lm(y~x);abline(model,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
+
+y <- dt_final[,bind_gAPN]; x <- dt_final[,expr]; plot(x,y,pch=16,col="#00000020",ylab="galline APN (log10Ka)",xlab="expression (MFI)",main="", xlim=c(4,10.5),ylim=c(4,10.5));model <- lm(y~x);abline(model,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
+
 
 plot(0,type='n',axes=FALSE,ann=F)
 
-x <- dt_final[,bind_hAPN]; y <- dt_final[,bind_pAPN]; plot(x,y,pch=16,col="#00000020",xlab="human APN (MFI)",ylab="porcine APN (MFI)",main="", xlim=c(4,10.5),ylim=c(4,10.5));model <- lm(y~x);abline(model,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
+y <- dt_final[,bind_hAPN]; x <- dt_final[,bind_pAPN]; plot(x,y,pch=16,col="#00000020",ylab="human APN (MFI)",xlab="porcine APN (MFI)",main="", xlim=c(4,10.5),ylim=c(4,10.5));model <- lm(y~x);abline(model,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
+
+y <- dt_final[,bind_hAPN]; x <- dt_final[,expr]; plot(x,y,pch=16,col="#00000020",ylab="human APN (MFI)",xlab="expression (MFI)",main="", xlim=c(4,10.5),ylim=c(4,10.5));model <- lm(y~x);abline(model,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
+
+plot(0,type='n',axes=FALSE,ann=F)
+
+plot(0,type='n',axes=FALSE,ann=F)
+
+y <- dt_final[,bind_pAPN]; x <- dt_final[,expr]; plot(x,y,pch=16,col="#00000020",ylab="human pAPN (MFI)",xlab="expression (MFI)",main="", xlim=c(4,10.5),ylim=c(4,10.5));model <- lm(y~x);abline(model,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
 ```
 
 <img src="collapse_scores_files/figure-gfm/plot_correlations_by_bg_bind-1.png" style="display: block; margin: auto;" />
@@ -393,11 +440,13 @@ temp <- data.table::melt(dt_final[, .(target,position,mutant,
                                       bind_gAPN,delta_bind_gAPN,
                                       bind_hAPN,delta_bind_hAPN,
                                       bind_pAPN,delta_bind_pAPN,
+                                      expr, delta_expr,
                                       wildtype_indicator)],
                          id.vars=c("target","position","mutant","wildtype_indicator"),
                          measure.vars=c("bind_gAPN","delta_bind_gAPN",
                                         "bind_hAPN","delta_bind_hAPN",
-                                        "bind_pAPN","delta_bind_pAPN"),
+                                        "bind_pAPN","delta_bind_pAPN",
+                                        "expr","delta_expr"),
                          variable.name="measurement",value.name="value")
 
 #for method to duplicate aa labels on right side of plot https://github.com/tidyverse/ggplot2/issues/3171
@@ -413,6 +462,51 @@ guide_train.guide_axis_trans <- function(x, ...) {
   trained$key$.label <- x$label_trans(trained$key$.label)
   trained
 }
+```
+
+Make heatmaps showing raw expression and delta_expression
+
+``` r
+p1 <- ggplot(temp[measurement=="expr",],aes(position,mutant))+geom_tile(aes(fill=value),color="black",lwd=0.1)+
+  #scale_fill_gradientn(colours=c("#FFFFFF","#003366"),limits=c(5,10.5),na.value="yellow")+
+  scale_fill_gradientn(colours=c("#FFFFFF","#FFFFFF","#003366"),limits=c(5.5,9),values=c(0,1/3.5,3.5/3.5),na.value="yellow")+ #three notches in case I want to 'censor' closer to the 5 boundary condition
+  scale_x_continuous(expand=c(0,0),breaks=c(303,seq(305,416,by=5)))+
+  labs(x="",y="")+theme_classic(base_size=9)+
+  coord_equal()+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.6,face="bold",size=10),axis.text.y=element_text(face="bold",size=10))+
+  facet_wrap(~target,nrow=5)+
+  guides(y.sec=guide_axis_label_trans())+
+  geom_text(aes(label=wildtype_indicator),size=2,color="gray10")+
+  theme(strip.text.x = element_text(size = 18))
+
+p1
+```
+
+<img src="collapse_scores_files/figure-gfm/heatmap_DMS_log10Ka_expr-1.png" style="display: block; margin: auto;" />
+
+``` r
+invisible(dev.print(pdf, paste(config$final_variant_scores_dir,"/heatmap_expr_MFI.pdf",sep="")))
+```
+
+Second, illustrating delta_MFI for expr
+
+``` r
+p1 <- ggplot(temp[measurement=="delta_expr",],aes(position,mutant))+geom_tile(aes(fill=value),color="black",lwd=0.1)+
+  scale_fill_gradientn(colours=c("#A94E35","#A94E35","#F48365","#FFFFFF","#7378B9","#383C6C"),limits=c(-3,0.5),values=c(0/3.5,1/3.5,2/3.5,3/3.5,3.25/3.5,3.5/3.5),na.value="yellow")+
+  scale_x_continuous(expand=c(0,0),breaks=c(303,seq(305,416,by=5)))+
+  labs(x="",y="")+theme_classic(base_size=9)+
+  coord_equal()+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.6,face="bold",size=10),axis.text.y=element_text(face="bold",size=10))+
+  facet_wrap(~target,nrow=5)+
+  guides(y.sec=guide_axis_label_trans())+
+  geom_text(aes(label=wildtype_indicator),size=2,color="gray10")+
+  theme(strip.text.x = element_text(size = 18))
+
+p1
+```
+
+<img src="collapse_scores_files/figure-gfm/heatmap_DMS_delta_expr-1.png" style="display: block; margin: auto;" />
+
+``` r
+invisible(dev.print(pdf, paste(config$final_variant_scores_dir,"/heatmap_expr_delta-MFI.pdf",sep="")))
 ```
 
 Make heatmaps showing raw affinity and delta-affinity of muts relative
@@ -553,7 +647,8 @@ Save output files.
 dt_final[,.(target,wildtype,position,mutant,mutation,
             bind_gAPN,delta_bind_gAPN,n_bc_gAPN,n_libs_gAPN,gAPN_rep1,gAPN_rep2,
             bind_hAPN,delta_bind_hAPN,n_bc_hAPN,n_libs_hAPN,hAPN_rep1,hAPN_rep2,
-            bind_pAPN,delta_bind_pAPN,n_bc_pAPN,n_libs_pAPN,pAPN_rep1,pAPN_rep2)] %>%
+            bind_pAPN,delta_bind_pAPN,n_bc_pAPN,n_libs_pAPN,pAPN_rep1,pAPN_rep2,
+            expr, delta_expr, n_bc_expr, n_libs_expr, expr_rep1, expr_rep2)] %>%
   mutate_if(is.numeric, round, digits=5) %>%
   write.csv(file=config$final_variant_scores_mut_file, row.names=F,quote=F)
 ```

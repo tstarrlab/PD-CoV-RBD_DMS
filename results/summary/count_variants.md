@@ -252,7 +252,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_01_bin1</td>
       <td>TiteSeq</td>
       <td>1</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221207</td>
       <td>576339</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s1_b1_S1_R1_001.fastq.gz]</td>
@@ -263,7 +263,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_01_bin2</td>
       <td>TiteSeq</td>
       <td>2</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221207</td>
       <td>1013945</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s1_b2_S2_R1_001.fastq.gz]</td>
@@ -274,7 +274,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_01_bin3</td>
       <td>TiteSeq</td>
       <td>3</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221207</td>
       <td>1643755</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s1_b3_S3_R1_001.fastq.gz]</td>
@@ -285,7 +285,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_01_bin4</td>
       <td>TiteSeq</td>
       <td>4</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221207</td>
       <td>1850778</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s1_b4_S4_R1_001.fastq.gz]</td>
@@ -296,7 +296,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_02_bin1</td>
       <td>TiteSeq</td>
       <td>1</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>221207</td>
       <td>1048743</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s2_b1_S5_R1_001.fastq.gz]</td>
@@ -307,7 +307,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_02_bin2</td>
       <td>TiteSeq</td>
       <td>2</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>221207</td>
       <td>1143654</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s2_b2_S6_R1_001.fastq.gz]</td>
@@ -318,7 +318,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_02_bin3</td>
       <td>TiteSeq</td>
       <td>3</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>221207</td>
       <td>1767189</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s2_b3_S7_R1_001.fastq.gz]</td>
@@ -329,7 +329,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_02_bin4</td>
       <td>TiteSeq</td>
       <td>4</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>221207</td>
       <td>1142166</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s2_b4_S8_R1_001.fastq.gz]</td>
@@ -340,7 +340,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_03_bin1</td>
       <td>TiteSeq</td>
       <td>1</td>
-      <td>3</td>
+      <td>3.0</td>
       <td>221207</td>
       <td>2284613</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s3_b1_S9_R1_001.fastq.gz]</td>
@@ -351,7 +351,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_03_bin2</td>
       <td>TiteSeq</td>
       <td>2</td>
-      <td>3</td>
+      <td>3.0</td>
       <td>221207</td>
       <td>1677978</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s3_b2_S10_R1_001.fastq.gz]</td>
@@ -362,7 +362,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_03_bin3</td>
       <td>TiteSeq</td>
       <td>3</td>
-      <td>3</td>
+      <td>3.0</td>
       <td>221207</td>
       <td>1324283</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s3_b3_S11_R1_001.fastq.gz]</td>
@@ -373,7 +373,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_03_bin4</td>
       <td>TiteSeq</td>
       <td>4</td>
-      <td>3</td>
+      <td>3.0</td>
       <td>221207</td>
       <td>123221</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s3_b4_S12_R1_001.fastq.gz]</td>
@@ -384,7 +384,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_04_bin1</td>
       <td>TiteSeq</td>
       <td>1</td>
-      <td>4</td>
+      <td>4.0</td>
       <td>221207</td>
       <td>3416070</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s4_b1_S13_R1_001.fastq.gz]</td>
@@ -395,7 +395,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_04_bin2</td>
       <td>TiteSeq</td>
       <td>2</td>
-      <td>4</td>
+      <td>4.0</td>
       <td>221207</td>
       <td>2004230</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s4_b2_S14_R1_001.fastq.gz]</td>
@@ -406,7 +406,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_04_bin3</td>
       <td>TiteSeq</td>
       <td>3</td>
-      <td>4</td>
+      <td>4.0</td>
       <td>221207</td>
       <td>130400</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s4_b3_S15_R1_001.fastq.gz]</td>
@@ -417,7 +417,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_04_bin4</td>
       <td>TiteSeq</td>
       <td>4</td>
-      <td>4</td>
+      <td>4.0</td>
       <td>221207</td>
       <td>28184</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s4_b4_S16_R1_001.fastq.gz]</td>
@@ -428,7 +428,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_05_bin1</td>
       <td>TiteSeq</td>
       <td>1</td>
-      <td>5</td>
+      <td>5.0</td>
       <td>221207</td>
       <td>4733319</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s5_b1_S17_R1_001.fastq.gz]</td>
@@ -439,7 +439,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_05_bin2</td>
       <td>TiteSeq</td>
       <td>2</td>
-      <td>5</td>
+      <td>5.0</td>
       <td>221207</td>
       <td>427554</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s5_b2_S18_R1_001.fastq.gz]</td>
@@ -450,7 +450,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_05_bin3</td>
       <td>TiteSeq</td>
       <td>3</td>
-      <td>5</td>
+      <td>5.0</td>
       <td>221207</td>
       <td>11437</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s5_b3_S19_R1_001.fastq.gz]</td>
@@ -461,7 +461,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_05_bin4</td>
       <td>TiteSeq</td>
       <td>4</td>
-      <td>5</td>
+      <td>5.0</td>
       <td>221207</td>
       <td>4566</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s5_b4_S20_R1_001.fastq.gz]</td>
@@ -472,7 +472,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_06_bin1</td>
       <td>TiteSeq</td>
       <td>1</td>
-      <td>6</td>
+      <td>6.0</td>
       <td>221207</td>
       <td>4931339</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s6_b1_S21_R1_001.fastq.gz]</td>
@@ -483,7 +483,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_06_bin2</td>
       <td>TiteSeq</td>
       <td>2</td>
-      <td>6</td>
+      <td>6.0</td>
       <td>221207</td>
       <td>154714</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s6_b2_S22_R1_001.fastq.gz]</td>
@@ -494,7 +494,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_06_bin3</td>
       <td>TiteSeq</td>
       <td>3</td>
-      <td>6</td>
+      <td>6.0</td>
       <td>221207</td>
       <td>1821</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s6_b3_S23_R1_001.fastq.gz]</td>
@@ -505,7 +505,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_06_bin4</td>
       <td>TiteSeq</td>
       <td>4</td>
-      <td>6</td>
+      <td>6.0</td>
       <td>221207</td>
       <td>434</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s6_b4_S24_R1_001.fastq.gz]</td>
@@ -516,7 +516,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_07_bin1</td>
       <td>TiteSeq</td>
       <td>1</td>
-      <td>7</td>
+      <td>7.0</td>
       <td>221207</td>
       <td>4991202</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s7_b1_S25_R1_001.fastq.gz]</td>
@@ -527,7 +527,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_07_bin2</td>
       <td>TiteSeq</td>
       <td>2</td>
-      <td>7</td>
+      <td>7.0</td>
       <td>221207</td>
       <td>137754</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s7_b2_S26_R1_001.fastq.gz]</td>
@@ -538,7 +538,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_07_bin3</td>
       <td>TiteSeq</td>
       <td>3</td>
-      <td>7</td>
+      <td>7.0</td>
       <td>221207</td>
       <td>1260</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s7_b3_S27_R1_001.fastq.gz]</td>
@@ -549,7 +549,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_07_bin4</td>
       <td>TiteSeq</td>
       <td>4</td>
-      <td>7</td>
+      <td>7.0</td>
       <td>221207</td>
       <td>70</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s7_b4_S28_R1_001.fastq.gz]</td>
@@ -560,7 +560,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_08_bin1</td>
       <td>TiteSeq</td>
       <td>1</td>
-      <td>8</td>
+      <td>8.0</td>
       <td>221207</td>
       <td>5012941</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s8_b1_S29_R1_001.fastq.gz]</td>
@@ -571,7 +571,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_08_bin2</td>
       <td>TiteSeq</td>
       <td>2</td>
-      <td>8</td>
+      <td>8.0</td>
       <td>221207</td>
       <td>131114</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s8_b2_S30_R1_001.fastq.gz]</td>
@@ -582,7 +582,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_08_bin3</td>
       <td>TiteSeq</td>
       <td>3</td>
-      <td>8</td>
+      <td>8.0</td>
       <td>221207</td>
       <td>916</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s8_b3_S31_R1_001.fastq.gz]</td>
@@ -593,7 +593,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_08_bin4</td>
       <td>TiteSeq</td>
       <td>4</td>
-      <td>8</td>
+      <td>8.0</td>
       <td>221207</td>
       <td>24</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s8_b4_S32_R1_001.fastq.gz]</td>
@@ -604,7 +604,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_09_bin1</td>
       <td>TiteSeq</td>
       <td>1</td>
-      <td>9</td>
+      <td>9.0</td>
       <td>221207</td>
       <td>4923572</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s9_b1_S33_R1_001.fastq.gz]</td>
@@ -615,7 +615,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_09_bin2</td>
       <td>TiteSeq</td>
       <td>2</td>
-      <td>9</td>
+      <td>9.0</td>
       <td>221207</td>
       <td>250693</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s9_b2_S34_R1_001.fastq.gz]</td>
@@ -626,7 +626,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_09_bin3</td>
       <td>TiteSeq</td>
       <td>3</td>
-      <td>9</td>
+      <td>9.0</td>
       <td>221207</td>
       <td>558</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s9_b3_S35_R1_001.fastq.gz]</td>
@@ -637,7 +637,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_09_bin4</td>
       <td>TiteSeq</td>
       <td>4</td>
-      <td>9</td>
+      <td>9.0</td>
       <td>221207</td>
       <td>25</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s9_b4_S36_R1_001.fastq.gz]</td>
@@ -648,7 +648,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>hAPN_01_bin1</td>
       <td>hAPN_sortseq</td>
       <td>1</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221207</td>
       <td>3198849</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s10_b1_S37_R1_001.fastq.gz]</td>
@@ -659,7 +659,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>hAPN_01_bin2</td>
       <td>hAPN_sortseq</td>
       <td>2</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221207</td>
       <td>1965752</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s10_b2_S38_R1_001.fastq.gz]</td>
@@ -670,7 +670,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>hAPN_01_bin3</td>
       <td>hAPN_sortseq</td>
       <td>3</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221207</td>
       <td>125241</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s10_b3_S39_R1_001.fastq.gz]</td>
@@ -681,7 +681,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>hAPN_01_bin4</td>
       <td>hAPN_sortseq</td>
       <td>4</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221207</td>
       <td>12973</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s10_b4_S40_R1_001.fastq.gz]</td>
@@ -692,7 +692,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>pAPN_01_bin1</td>
       <td>pAPN_sortseq</td>
       <td>1</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221207</td>
       <td>2294711</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s11_b1_S41_R1_001.fastq.gz]</td>
@@ -703,7 +703,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>pAPN_01_bin2</td>
       <td>pAPN_sortseq</td>
       <td>2</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221207</td>
       <td>2785686</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s11_b2_S42_R1_001.fastq.gz]</td>
@@ -714,7 +714,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>pAPN_01_bin3</td>
       <td>pAPN_sortseq</td>
       <td>3</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221207</td>
       <td>114535</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s11_b3_S43_R1_001.fastq.gz]</td>
@@ -725,7 +725,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>pAPN_01_bin4</td>
       <td>pAPN_sortseq</td>
       <td>4</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221207</td>
       <td>6556</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221207_s11_b4_S44_R1_001.fastq.gz]</td>
@@ -736,7 +736,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_01_bin1</td>
       <td>TiteSeq</td>
       <td>1</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221209</td>
       <td>964285</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s1_b1_S45_R1_001.fastq.gz]</td>
@@ -747,7 +747,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_01_bin2</td>
       <td>TiteSeq</td>
       <td>2</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221209</td>
       <td>962892</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s1_b2_S46_R1_001.fastq.gz]</td>
@@ -758,7 +758,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_01_bin3</td>
       <td>TiteSeq</td>
       <td>3</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221209</td>
       <td>1543533</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s1_b3_S47_R1_001.fastq.gz]</td>
@@ -769,7 +769,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_01_bin4</td>
       <td>TiteSeq</td>
       <td>4</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221209</td>
       <td>1755272</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s1_b4_S48_R1_001.fastq.gz]</td>
@@ -780,7 +780,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_02_bin1</td>
       <td>TiteSeq</td>
       <td>1</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>221209</td>
       <td>1338117</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s2_b1_S49_R1_001.fastq.gz]</td>
@@ -791,7 +791,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_02_bin2</td>
       <td>TiteSeq</td>
       <td>2</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>221209</td>
       <td>1349278</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s2_b2_S50_R1_001.fastq.gz]</td>
@@ -802,7 +802,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_02_bin3</td>
       <td>TiteSeq</td>
       <td>3</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>221209</td>
       <td>1830736</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s2_b3_S51_R1_001.fastq.gz]</td>
@@ -813,7 +813,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_02_bin4</td>
       <td>TiteSeq</td>
       <td>4</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>221209</td>
       <td>876417</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s2_b4_S52_R1_001.fastq.gz]</td>
@@ -824,7 +824,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_03_bin1</td>
       <td>TiteSeq</td>
       <td>1</td>
-      <td>3</td>
+      <td>3.0</td>
       <td>221209</td>
       <td>2422983</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s3_b1_S53_R1_001.fastq.gz]</td>
@@ -835,7 +835,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_03_bin2</td>
       <td>TiteSeq</td>
       <td>2</td>
-      <td>3</td>
+      <td>3.0</td>
       <td>221209</td>
       <td>1866638</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s3_b2_S54_R1_001.fastq.gz]</td>
@@ -846,7 +846,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_03_bin3</td>
       <td>TiteSeq</td>
       <td>3</td>
-      <td>3</td>
+      <td>3.0</td>
       <td>221209</td>
       <td>1005456</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s3_b3_S55_R1_001.fastq.gz]</td>
@@ -857,7 +857,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_03_bin4</td>
       <td>TiteSeq</td>
       <td>4</td>
-      <td>3</td>
+      <td>3.0</td>
       <td>221209</td>
       <td>76285</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s3_b4_S56_R1_001.fastq.gz]</td>
@@ -868,7 +868,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_04_bin1</td>
       <td>TiteSeq</td>
       <td>1</td>
-      <td>4</td>
+      <td>4.0</td>
       <td>221209</td>
       <td>3799329</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s4_b1_S57_R1_001.fastq.gz]</td>
@@ -879,7 +879,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_04_bin2</td>
       <td>TiteSeq</td>
       <td>2</td>
-      <td>4</td>
+      <td>4.0</td>
       <td>221209</td>
       <td>1402025</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s4_b2_S58_R1_001.fastq.gz]</td>
@@ -890,7 +890,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_04_bin3</td>
       <td>TiteSeq</td>
       <td>3</td>
-      <td>4</td>
+      <td>4.0</td>
       <td>221209</td>
       <td>61072</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s4_b3_S59_R1_001.fastq.gz]</td>
@@ -901,7 +901,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_04_bin4</td>
       <td>TiteSeq</td>
       <td>4</td>
-      <td>4</td>
+      <td>4.0</td>
       <td>221209</td>
       <td>14107</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s4_b4_S60_R1_001.fastq.gz]</td>
@@ -912,7 +912,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_05_bin1</td>
       <td>TiteSeq</td>
       <td>1</td>
-      <td>5</td>
+      <td>5.0</td>
       <td>221209</td>
       <td>4765923</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s5_b1_S61_R1_001.fastq.gz]</td>
@@ -923,7 +923,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_05_bin2</td>
       <td>TiteSeq</td>
       <td>2</td>
-      <td>5</td>
+      <td>5.0</td>
       <td>221209</td>
       <td>363923</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s5_b2_S62_R1_001.fastq.gz]</td>
@@ -934,7 +934,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_05_bin3</td>
       <td>TiteSeq</td>
       <td>3</td>
-      <td>5</td>
+      <td>5.0</td>
       <td>221209</td>
       <td>10732</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s5_b3_S63_R1_001.fastq.gz]</td>
@@ -945,7 +945,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_05_bin4</td>
       <td>TiteSeq</td>
       <td>4</td>
-      <td>5</td>
+      <td>5.0</td>
       <td>221209</td>
       <td>1670</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s5_b4_S64_R1_001.fastq.gz]</td>
@@ -956,7 +956,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_06_bin1</td>
       <td>TiteSeq</td>
       <td>1</td>
-      <td>6</td>
+      <td>6.0</td>
       <td>221209</td>
       <td>4978827</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s6_b1_S65_R1_001.fastq.gz]</td>
@@ -967,7 +967,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_06_bin2</td>
       <td>TiteSeq</td>
       <td>2</td>
-      <td>6</td>
+      <td>6.0</td>
       <td>221209</td>
       <td>98231</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s6_b2_S66_R1_001.fastq.gz]</td>
@@ -978,7 +978,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_06_bin3</td>
       <td>TiteSeq</td>
       <td>3</td>
-      <td>6</td>
+      <td>6.0</td>
       <td>221209</td>
       <td>2021</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s6_b3_S67_R1_001.fastq.gz]</td>
@@ -989,7 +989,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_06_bin4</td>
       <td>TiteSeq</td>
       <td>4</td>
-      <td>6</td>
+      <td>6.0</td>
       <td>221209</td>
       <td>189</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s6_b4_S68_R1_001.fastq.gz]</td>
@@ -1000,7 +1000,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_07_bin1</td>
       <td>TiteSeq</td>
       <td>1</td>
-      <td>7</td>
+      <td>7.0</td>
       <td>221209</td>
       <td>4917222</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s7_b1_S69_R1_001.fastq.gz]</td>
@@ -1011,7 +1011,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_07_bin2</td>
       <td>TiteSeq</td>
       <td>2</td>
-      <td>7</td>
+      <td>7.0</td>
       <td>221209</td>
       <td>122338</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s7_b2_S70_R1_001.fastq.gz]</td>
@@ -1022,7 +1022,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_07_bin3</td>
       <td>TiteSeq</td>
       <td>3</td>
-      <td>7</td>
+      <td>7.0</td>
       <td>221209</td>
       <td>2104</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s7_b3_S71_R1_001.fastq.gz]</td>
@@ -1033,7 +1033,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_07_bin4</td>
       <td>TiteSeq</td>
       <td>4</td>
-      <td>7</td>
+      <td>7.0</td>
       <td>221209</td>
       <td>77</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s7_b4_S72_R1_001.fastq.gz]</td>
@@ -1044,7 +1044,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_08_bin1</td>
       <td>TiteSeq</td>
       <td>1</td>
-      <td>8</td>
+      <td>8.0</td>
       <td>221209</td>
       <td>4929385</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s8_b1_S73_R1_001.fastq.gz]</td>
@@ -1055,7 +1055,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_08_bin2</td>
       <td>TiteSeq</td>
       <td>2</td>
-      <td>8</td>
+      <td>8.0</td>
       <td>221209</td>
       <td>107644</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s8_b2_S74_R1_001.fastq.gz]</td>
@@ -1066,7 +1066,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_08_bin3</td>
       <td>TiteSeq</td>
       <td>3</td>
-      <td>8</td>
+      <td>8.0</td>
       <td>221209</td>
       <td>2402</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s8_b3_S75_R1_001.fastq.gz]</td>
@@ -1077,7 +1077,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_08_bin4</td>
       <td>TiteSeq</td>
       <td>4</td>
-      <td>8</td>
+      <td>8.0</td>
       <td>221209</td>
       <td>52</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s8_b4_S76_R1_001.fastq.gz]</td>
@@ -1088,7 +1088,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_09_bin1</td>
       <td>TiteSeq</td>
       <td>1</td>
-      <td>9</td>
+      <td>9.0</td>
       <td>221209</td>
       <td>4912812</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s9_b1_S77_R1_001.fastq.gz]</td>
@@ -1099,7 +1099,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_09_bin2</td>
       <td>TiteSeq</td>
       <td>2</td>
-      <td>9</td>
+      <td>9.0</td>
       <td>221209</td>
       <td>228754</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s9_b2_S78_R1_001.fastq.gz]</td>
@@ -1110,7 +1110,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_09_bin3</td>
       <td>TiteSeq</td>
       <td>3</td>
-      <td>9</td>
+      <td>9.0</td>
       <td>221209</td>
       <td>270</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s9_b3_S79_R1_001.fastq.gz]</td>
@@ -1121,7 +1121,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>TiteSeq_09_bin4</td>
       <td>TiteSeq</td>
       <td>4</td>
-      <td>9</td>
+      <td>9.0</td>
       <td>221209</td>
       <td>44</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s9_b4_S80_R1_001.fastq.gz]</td>
@@ -1132,7 +1132,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>hAPN_01_bin1</td>
       <td>hAPN_sortseq</td>
       <td>1</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221209</td>
       <td>3167478</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s10_b1_S81_R1_001.fastq.gz]</td>
@@ -1143,7 +1143,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>hAPN_01_bin2</td>
       <td>hAPN_sortseq</td>
       <td>2</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221209</td>
       <td>1971976</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s10_b2_S82_R1_001.fastq.gz]</td>
@@ -1154,7 +1154,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>hAPN_01_bin3</td>
       <td>hAPN_sortseq</td>
       <td>3</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221209</td>
       <td>113873</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s10_b3_S83_R1_001.fastq.gz]</td>
@@ -1165,7 +1165,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>hAPN_01_bin4</td>
       <td>hAPN_sortseq</td>
       <td>4</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221209</td>
       <td>22551</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s10_b4_S84_R1_001.fastq.gz]</td>
@@ -1176,7 +1176,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>pAPN_01_bin1</td>
       <td>pAPN_sortseq</td>
       <td>1</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221209</td>
       <td>3335297</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s11_b1_S85_R1_001.fastq.gz]</td>
@@ -1187,7 +1187,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>pAPN_01_bin2</td>
       <td>pAPN_sortseq</td>
       <td>2</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221209</td>
       <td>1846808</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s11_b2_S86_R1_001.fastq.gz]</td>
@@ -1198,7 +1198,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>pAPN_01_bin3</td>
       <td>pAPN_sortseq</td>
       <td>3</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221209</td>
       <td>84711</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s11_b3_S87_R1_001.fastq.gz]</td>
@@ -1209,10 +1209,98 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>pAPN_01_bin4</td>
       <td>pAPN_sortseq</td>
       <td>4</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>221209</td>
       <td>6211</td>
       <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2022/221228_PD-CoV-DMS_bc-seq/221209_s11_b4_S88_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>lib55</td>
+      <td>A</td>
+      <td>SortSeq_bin1</td>
+      <td>SortSeq</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>240426</td>
+      <td>2947338</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp1-RBD-bin1-1_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp1-RBD-bin1-2_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp1-RBD-bin1-3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>lib55</td>
+      <td>A</td>
+      <td>SortSeq_bin2</td>
+      <td>SortSeq</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>240426</td>
+      <td>2540256</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp1-RBD-bin2-1_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp1-RBD-bin2-2_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp1-RBD-bin2-3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>lib55</td>
+      <td>A</td>
+      <td>SortSeq_bin3</td>
+      <td>SortSeq</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>240426</td>
+      <td>4747315</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp1-RBD-bin3-1_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp1-RBD-bin3-2_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp1-RBD-bin3-3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>lib55</td>
+      <td>A</td>
+      <td>SortSeq_bin4</td>
+      <td>SortSeq</td>
+      <td>4</td>
+      <td>NaN</td>
+      <td>240426</td>
+      <td>5251692</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp1-RBD-bin4-1_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp1-RBD-bin4-2_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp1-RBD-bin4-3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>lib56</td>
+      <td>A</td>
+      <td>SortSeq_bin1</td>
+      <td>SortSeq</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>240426</td>
+      <td>2072673</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp2-RBD-bin1-1_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp2-RBD-bin1-2_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp2-RBD-bin1-3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>lib56</td>
+      <td>A</td>
+      <td>SortSeq_bin2</td>
+      <td>SortSeq</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>240426</td>
+      <td>3007469</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp2-RBD-bin2-1_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp2-RBD-bin2-2_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp2-RBD-bin2-3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>lib56</td>
+      <td>A</td>
+      <td>SortSeq_bin3</td>
+      <td>SortSeq</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>240426</td>
+      <td>6248171</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp2-RBD-bin3-1_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp2-RBD-bin3-2_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp2-RBD-bin3-3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>lib56</td>
+      <td>A</td>
+      <td>SortSeq_bin4</td>
+      <td>SortSeq</td>
+      <td>4</td>
+      <td>NaN</td>
+      <td>240426</td>
+      <td>6349419</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp2-RBD-bin4-1_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp2-RBD-bin4-2_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240510_Illumina_mAb-escape-expr-PD-CoV/240426-exp2-RBD-bin4-3_R1_001.fastq.gz]</td>
     </tr>
   </tbody>
 </table>
@@ -1560,8 +1648,40 @@ display(HTML(fates
   </thead>
   <tbody>
     <tr>
-      <th rowspan="44" valign="top">lib55</th>
-      <th rowspan="44" valign="top">A</th>
+      <th rowspan="48" valign="top">lib55</th>
+      <th rowspan="48" valign="top">A</th>
+      <th>SortSeq_bin1</th>
+      <td>0</td>
+      <td>4360907</td>
+      <td>1396491</td>
+      <td>178377</td>
+      <td>10986249</td>
+    </tr>
+    <tr>
+      <th>SortSeq_bin2</th>
+      <td>0</td>
+      <td>4352177</td>
+      <td>1508239</td>
+      <td>171402</td>
+      <td>11156583</td>
+    </tr>
+    <tr>
+      <th>SortSeq_bin3</th>
+      <td>0</td>
+      <td>7246808</td>
+      <td>2669304</td>
+      <td>335302</td>
+      <td>20846915</td>
+    </tr>
+    <tr>
+      <th>SortSeq_bin4</th>
+      <td>0</td>
+      <td>7708586</td>
+      <td>2714113</td>
+      <td>370791</td>
+      <td>22632248</td>
+    </tr>
+    <tr>
       <th>TiteSeq_01_bin1</th>
       <td>0</td>
       <td>698777</td>
@@ -1914,8 +2034,40 @@ display(HTML(fates
       <td>10167</td>
     </tr>
     <tr>
-      <th rowspan="44" valign="top">lib56</th>
-      <th rowspan="44" valign="top">A</th>
+      <th rowspan="48" valign="top">lib56</th>
+      <th rowspan="48" valign="top">A</th>
+      <th>SortSeq_bin1</th>
+      <td>0</td>
+      <td>3634777</td>
+      <td>920688</td>
+      <td>122514</td>
+      <td>6659301</td>
+    </tr>
+    <tr>
+      <th>SortSeq_bin2</th>
+      <td>0</td>
+      <td>4519796</td>
+      <td>1158651</td>
+      <td>162278</td>
+      <td>8453909</td>
+    </tr>
+    <tr>
+      <th>SortSeq_bin3</th>
+      <td>0</td>
+      <td>10888406</td>
+      <td>3017777</td>
+      <td>387809</td>
+      <td>22723229</td>
+    </tr>
+    <tr>
+      <th>SortSeq_bin4</th>
+      <td>0</td>
+      <td>10782530</td>
+      <td>2964330</td>
+      <td>349222</td>
+      <td>22369383</td>
+    </tr>
+    <tr>
       <th>TiteSeq_01_bin1</th>
       <td>0</td>
       <td>931950</td>

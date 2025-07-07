@@ -21,7 +21,9 @@ workflow:
 
 4. Analyze single-concentration sort-seq experients for [hAPN](compute_hAPN_meanF.md) and [pAPN](compute_pAPN_meanF.md) to calculate per-barcode binding MFI, recorded in these files for [hAPN](../binding_scores/hAPN_bc_binding.csv) and [pAPN](../binding_scores/pAPN_bc_binding.csv).
 
-5. [Derive final genotype-level phenotypes from replicate barcoded sequences](collapse_scores.md).
+5. [Analyze Sort-seq](compute_expression_meanF.md) to calculate per-barcode RBD expression, recorded in [this file](../expression_meanF/bc_expression.csv).
+
+6. [Derive final genotype-level phenotypes from replicate barcoded sequences](collapse_scores.md).
    Generates final phenotypes, recorded in [this file](../final_variant_scores/final_variant_scores.csv).
 
-6. Make interactive data visualizations, available [here](https://tstarrlab.github.io/PD-CoV-RBD_DMS/)
+7. Make interactive data visualizations, available [here](https://tstarrlab.github.io/PD-CoV-RBD_DMS/)
